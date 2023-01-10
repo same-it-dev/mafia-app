@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Same IT mafia app repository
+
+## Author: Aleksandr Aksonov
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
