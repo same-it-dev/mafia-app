@@ -1,1 +1,1 @@
-export * from './ChildComponent'
+export * from "./NightResults";
