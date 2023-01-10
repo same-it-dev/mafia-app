@@ -1,0 +1,134 @@
+import { RoleInterface } from "common/interfaces";
+
+export const roles: RoleInterface[] = [
+  {
+    id: "beauty",
+    type: "city",
+    name: "Красуня",
+    priority: 1,
+    isActiveNight: true,
+    isDisabled: false,
+    desctiption:
+      "Грає за мирних, просинається у ночі та обирає одного гравця, цей гравець не має можливості використовувати свої здібності але і не може загинути",
+    abilities: ["immortalBlock"],
+  },
+  {
+    id: "scrounger",
+    type: "mafia",
+    name: "Крадій",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 2,
+    desctiption:
+      "Грає за мафію, Просинаеться у ночі. краде можливість у гравця зробити свій хід",
+    abilities: ["block"],
+  },
+  {
+    id: "doctor",
+    name: "Лікарка",
+    type: "city",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 3,
+    desctiption:
+      "Грає за мирних, Просинається у ночі та лікує одного гравця, не можно лікувати себе чи іншого гравця 2 рази підряд",
+    abilities: ["healing"],
+  },
+  {
+    id: "godfather",
+    name: "Хрещений батько",
+    type: "mafia",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 4,
+    desctiption:
+      "Лідер мафії, Просинаеться у ночі. Вирішує разом зі своєю командою в кого мафія буде стріляти у ночі",
+    abilities: ["killing"],
+  },
+  {
+    id: "chameleon",
+    name: "Хамелеон",
+    type: "mafia",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 5,
+    desctiption:
+      "Грає за мафію при перевірці завжди буде як звичайний мешканець міста",
+    abilities: [],
+  },
+  {
+    id: "mafiosi",
+    name: "Мафіозі",
+    type: "mafia",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 5,
+    desctiption: "Грає за мафію",
+    abilities: ["killing"],
+  },
+  {
+    id: "lawyer",
+    name: "Адвокат",
+    type: "city",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 6,
+    desctiption:
+      "Грає за мафію, Просинаеться у ночі. має можливість дізнатись роль одного з гравців",
+    abilities: ["checkRole"],
+  },
+  {
+    id: "sheriff",
+    name: "Шериф",
+    type: "city",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 7,
+    desctiption:
+      "Грає за мирних, Шериф просинається у ночі та має змогу перевіряти або стріляти",
+    abilities: ["checkPersonTeam", "killing"],
+  },
+  {
+    id: "maniac",
+    name: "Маніяк",
+    type: "self",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 8,
+    desctiption:
+      "Просинаеться у ночі, Грає самостійно від мафії та мирних стріляє у одного з участників",
+    abilities: ["killing"],
+  },
+  {
+    id: "detective",
+    name: "Детектив",
+    type: "city",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 9,
+    desctiption:
+      "Грає за мирних, просинається у ночі, вибирає двух гравців, та може дізнатися грають вони за одну команду або ні",
+    abilities: ["comparePersonsTeam"],
+  },
+  {
+    id: "admirer",
+    name: "Фанатка",
+    type: "city",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 10,
+    desctiption:
+      "Грає за мирних, просинається у ночі та обирає одного гравця, якщо цей гравець шериф то дізнається його роль",
+    abilities: ["checkSheriffRole"],
+  },
+  {
+    id: "peaceful",
+    name: "Мирний мешканець",
+    type: "city",
+    isActiveNight: false,
+    isDisabled: false,
+    priority: 20,
+    desctiption: "Грає за мирних",
+    abilities: [],
+  },
+];

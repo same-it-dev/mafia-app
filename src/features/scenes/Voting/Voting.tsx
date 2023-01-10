@@ -1,0 +1,1 @@
+export const Voting = () => <h2>Acquaintance</h2>
