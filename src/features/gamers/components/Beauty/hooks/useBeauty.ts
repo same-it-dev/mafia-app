@@ -22,26 +22,19 @@ export const useBeauty = (
 
     const { isSheriff, checkedGamer } = checkedSherifData;
 
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Перевірити гравця №-${checkedGamer.id} ${checkedGamer.role.name}?`
+    alert(
+      isSheriff
+        ? `Гравець ${checkedGamer.role.name} є шерифом`
+        : `Гравець ${checkedGamer.role.name} не шериф`
     );
 
-    if (isRunAbility) {
-      alert(
-        isSheriff
-          ? `Гравець ${checkedGamer.role.name} є шерифом`
-          : `Гравець ${checkedGamer.role.name} не шериф`
-      );
+    onFinishAbility("success");
 
-      onFinishAbility("success");
-
-      registerNightAction({
-        abilityId: "checkPersonTeam",
-        gamerIdFrom: gamerId,
-        gamersIdsTo: [checkedGamer.id],
-      });
-    }
+    registerNightAction({
+      abilityId: "checkPersonTeam",
+      gamerIdFrom: gamerId,
+      gamersIdsTo: [checkedGamer.id],
+    });
   };
 
   return {

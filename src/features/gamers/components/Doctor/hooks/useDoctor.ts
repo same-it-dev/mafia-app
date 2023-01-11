@@ -24,18 +24,13 @@ export const useDoctor = (
   const onPushAbility = () => {
     if (!pushedGamer) return alert("Оберіть гравця!");
 
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Використати здібність в ${pushedGamer.role.name} ?`
-    );
-
     const isCheckPrevNight = checkPrevNigthToGamerAction(pushedGamer.id);
 
     if (isCheckPrevNight) {
       alert("Заборонено використовувати здібність 2 рази підряд");
     }
 
-    if (!isCheckPrevNight && isRunAbility) {
+    if (!isCheckPrevNight) {
       pushAbility(pushedGamer);
       onFinishAbility("success");
       registerNightAction({

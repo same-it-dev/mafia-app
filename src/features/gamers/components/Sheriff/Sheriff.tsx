@@ -36,7 +36,7 @@ export const Sheriff = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
         onSelectGamer={onChangeGamerIdKilling}
       />
 
-      <Button variant="contained" onClick={onPushAbility}>
+      <Button variant="contained" onDoubleClick={onPushAbility}>
         Використати здібність
       </Button>
     </>

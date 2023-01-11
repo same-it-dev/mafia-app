@@ -23,20 +23,13 @@ export const useGodfather = (
   const onPushAbility = () => {
     if (!pushedGamer) return alert("Оберіть гравця!");
 
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Використати здібність в ${pushedGamer.role.name} ?`
-    );
-
-    if (isRunAbility) {
-      pushAbility(pushedGamer);
-      onFinishAbility("success");
-      registerNightAction({
-        abilityId: "killing",
-        gamerIdFrom: gamerId,
-        gamersIdsTo: [pushedGamer.id],
-      });
-    }
+    pushAbility(pushedGamer);
+    onFinishAbility("success");
+    registerNightAction({
+      abilityId: "killing",
+      gamerIdFrom: gamerId,
+      gamersIdsTo: [pushedGamer.id],
+    });
   };
 
   return {

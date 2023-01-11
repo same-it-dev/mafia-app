@@ -26,26 +26,19 @@ export const useDetective = (
 
     const { isTeam, gamerFirst, gamerSecond } = checkComparePersonsData;
 
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Порівняти гравців №-${gamerFirst.id} ${gamerFirst.role.name} - №-${gamerSecond.id} ${gamerSecond.role.name}?`
+    alert(
+      isTeam
+        ? `Гравці №-${gamerFirst.id} ${gamerFirst.role.name} - №-${gamerSecond.id} ${gamerSecond.role.name} грають за одну команду`
+        : `Гравці №-${gamerFirst.id} ${gamerFirst.role.name} - №-${gamerSecond.id} ${gamerSecond.role.name} грають за різні команди`
     );
 
-    if (isRunAbility) {
-      alert(
-        isTeam
-          ? `Гравці №-${gamerFirst.id} ${gamerFirst.role.name} - №-${gamerSecond.id} ${gamerSecond.role.name} грають за одну команду`
-          : `Гравці №-${gamerFirst.id} ${gamerFirst.role.name} - №-${gamerSecond.id} ${gamerSecond.role.name} грають за різні команди`
-      );
+    onFinishAbility("success");
 
-      onFinishAbility("success");
-
-      registerNightAction({
-        abilityId: "checkPersonTeam",
-        gamerIdFrom: gamerId,
-        gamersIdsTo: [gamerFirst.id, gamerSecond.id],
-      });
-    }
+    registerNightAction({
+      abilityId: "checkPersonTeam",
+      gamerIdFrom: gamerId,
+      gamersIdsTo: [gamerFirst.id, gamerSecond.id],
+    });
   };
 
   return {

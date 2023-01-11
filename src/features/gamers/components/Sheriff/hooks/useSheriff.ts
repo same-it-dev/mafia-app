@@ -36,44 +36,30 @@ export const useSheriff = (
     if (!pushedGamer && !gamerIdCheckValue) return alert("Оберіть здібність!");
 
     if (pushedGamer) {
-      // eslint-disable-next-line no-restricted-globals
-      const isRunAbility = confirm(
-        `Використати здібність в №-${pushedGamer.id} ${pushedGamer.role.name} ?`
-      );
-
-      if (isRunAbility) {
-        pushAbility(pushedGamer);
-        onFinishAbility("success");
-        registerNightAction({
-          abilityId: "killing",
-          gamerIdFrom: gamerId,
-          gamersIdsTo: [pushedGamer.id],
-        });
-      }
+      pushAbility(pushedGamer);
+      onFinishAbility("success");
+      registerNightAction({
+        abilityId: "killing",
+        gamerIdFrom: gamerId,
+        gamersIdsTo: [pushedGamer.id],
+      });
     }
 
     if (checkedGamerData) {
       const { isTeam, checkedGamer } = checkedGamerData;
 
-      // eslint-disable-next-line no-restricted-globals
-      const isRunAbility = confirm(
-        `Перевірити гравця №-${checkedGamer.id} ${checkedGamer.role.name}?`
+      alert(
+        isTeam
+          ? `Гравець ${checkedGamer.role.name} грає за місто`
+          : `Гравець ${checkedGamer.role.name} не є гравцем за місто`
       );
 
-      if (isRunAbility) {
-        alert(
-          isTeam
-            ? `Гравець ${checkedGamer.role.name} грає за місто`
-            : `Гравець ${checkedGamer.role.name} не є гравцем за місто`
-        );
-
-        onFinishAbility("success");
-        registerNightAction({
-          abilityId: "checkPersonTeam",
-          gamerIdFrom: gamerId,
-          gamersIdsTo: [checkedGamer.id],
-        });
-      }
+      onFinishAbility("success");
+      registerNightAction({
+        abilityId: "checkPersonTeam",
+        gamerIdFrom: gamerId,
+        gamersIdsTo: [checkedGamer.id],
+      });
     }
   };
 

@@ -19,7 +19,7 @@ export const Detective = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
         onSelectGamers={onChangeGamerIds}
       />
 
-      <Button variant="contained" onClick={onPushAbility}>
+      <Button variant="contained" onDoubleClick={onPushAbility}>
         Використати здібність
       </Button>
     </>
