@@ -5,8 +5,6 @@ import { useStartGame } from "common/hooks/useStartGame";
 export const Header = () => {
   const { isStartGame } = useStartGame();
 
-  console.log(isStartGame);
-
   if (isStartGame) return <></>;
 
   return (

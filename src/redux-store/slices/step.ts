@@ -5,14 +5,7 @@ import { StepInterface, SceneTypes } from "../../common/interfaces";
 
 // Define the initial state using that type
 const initialState: StepInterface = {
-  isActive: false,
-  type: "setting",
   scene: "setting",
-  isRepeat: false,
-  isRequired: true,
-  isUsed: false,
-  action: "setting",
-  gamerRoleTime: 1,
 };
 
 export const stepSlice = createSlice({

@@ -5,6 +5,7 @@ import {
   useHealing,
   usePushIncomingAbility,
 } from "../../../hooks";
+import { useDialog } from "common/components";
 
 export const useDoctor = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -17,25 +18,15 @@ export const useDoctor = (
   const { registerNightAction, checkPrevNigthToGamerAction } =
     useNightActions();
 
+  const abilityDataDialog = useDialog();
+  const alertDataDialog = useDialog();
+
   const onChangeGamerId = (id: string) => {
     setGamerIdValue(id);
   };
 
-  const onPushAbility = () => {
-    if (!pushedGamer) return alert("Оберіть гравця!");
-
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Використати здібність в ${pushedGamer.role.name} ?`
-    );
-
-    const isCheckPrevNight = checkPrevNigthToGamerAction(pushedGamer.id);
-
-    if (isCheckPrevNight) {
-      alert("Заборонено використовувати здібність 2 рази підряд");
-    }
-
-    if (!isCheckPrevNight && isRunAbility) {
+  const onConfirmAbility = () => {
+    if (pushedGamer) {
       pushAbility(pushedGamer);
       onFinishAbility("success");
       registerNightAction({
@@ -46,9 +37,29 @@ export const useDoctor = (
     }
   };
 
+  const onPushAbility = () => {
+    if (!pushedGamer)
+      return alertDataDialog.onRunDialog({ title: "Оберіть гравця !" });
+
+    const isCheckPrevNight = checkPrevNigthToGamerAction(pushedGamer.id);
+
+    if (isCheckPrevNight) {
+      return alertDataDialog.onRunDialog({
+        title: "Заборонено використовувати здібність 2 рази підряд",
+      });
+    }
+
+    abilityDataDialog.onRunDialog({
+      title: "Використати здібність ?",
+      onConfirm: onConfirmAbility,
+    });
+  };
+
   return {
     onChangeGamerId,
     gamerIdValue,
     onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
   };
 };

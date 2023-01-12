@@ -5,6 +5,7 @@ import {
   useKilling,
   usePushIncomingAbility,
 } from "../../../hooks";
+import { useDialog } from "common/components";
 
 export const useManiac = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -16,19 +17,15 @@ export const useManiac = (
   const { pushAbility } = usePushIncomingAbility();
   const { registerNightAction } = useNightActions();
 
+  const abilityDataDialog = useDialog();
+  const alertDataDialog = useDialog();
+
   const onChangeGamerId = (id: string) => {
     setGamerIdValue(id);
   };
 
-  const onPushAbility = () => {
-    if (!pushedGamer) return alert("Оберіть гравця!");
-
-    // eslint-disable-next-line no-restricted-globals
-    const isRunAbility = confirm(
-      `Використати здібність в ${pushedGamer.role.name} ?`
-    );
-
-    if (isRunAbility) {
+  const onConfirmAbility = () => {
+    if (pushedGamer) {
       pushAbility(pushedGamer);
       onFinishAbility("success");
       registerNightAction({
@@ -39,9 +36,21 @@ export const useManiac = (
     }
   };
 
+  const onPushAbility = () => {
+    if (!pushedGamer)
+      return alertDataDialog.onRunDialog({ title: "Оберіть гравця !" });
+
+    abilityDataDialog.onRunDialog({
+      title: "Використати здібність ?",
+      onConfirm: onConfirmAbility,
+    });
+  };
+
   return {
     onChangeGamerId,
     gamerIdValue,
     onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
   };
 };

@@ -134,8 +134,8 @@ export const gamers: GamerInterface[] = [
     isBlocked: false,
     incomingAbilities: [],
     role: {
-      id: "beauty",
-      name: "Шанувальниця",
+      id: "admirer",
+      name: "Фанатка",
       type: "city",
       isActiveNight: true,
       isDisabled: false,

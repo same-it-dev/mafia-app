@@ -1,8 +1,4 @@
-import {
-  Button,
-  GamerListMultipleSelect,
-  GamerListSelect,
-} from "common/components";
+import { Button, Dialog, GamerListSelect } from "common/components";
 import { useAbility } from "common/hooks";
 import { GamerPropsInterface } from "../../interfaces";
 
@@ -18,6 +14,8 @@ export const Sheriff = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
     gamerIdCheckValue,
     onChangeGamerIdCheck,
     onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
   } = useSheriff(onFinishAbility, gamer.id);
 
   return (
@@ -36,9 +34,16 @@ export const Sheriff = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
         onSelectGamer={onChangeGamerIdKilling}
       />
 
-      <Button variant="contained" onClick={onPushAbility}>
+      <Button
+        className="gamer-push-ability"
+        variant="contained"
+        onClick={onPushAbility}
+      >
         Використати здібність
       </Button>
+
+      <Dialog {...abilityDataDialog} confirm reject />
+      <Dialog {...alertDataDialog} next />
     </>
   );
 };

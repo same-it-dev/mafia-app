@@ -15,12 +15,12 @@ export const Gamer = ({ gamer, onFinishAbility }: Props) => {
   return (
     <GamerCard>
       <DisabledGamer gamer={gamer} onFinishAbility={onFinishAbility} />
-      <Typography variant="h4">
+      <Typography variant="h2">
         {gamer.role.name} №-{gamer.id}
       </Typography>
 
       <Box
-        sx={{ position: "absolute", top: "80px" }}
+        sx={{ position: "absolute", top: "110px" }}
         component="img"
         src={`img/gamers/${gamer.role.id}.svg`}
       />

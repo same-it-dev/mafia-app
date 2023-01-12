@@ -5,11 +5,7 @@ import { useDispatch, setScene } from "redux-store";
 export const useScene = () => {
   const dispatch = useDispatch();
 
-  const runScene = (
-    sceneType: SceneTypes,
-    message: string,
-    nextScene?: string
-  ) => {
+  const runScene = (sceneType: SceneTypes, message?: string) => {
     const isRun = confirm(message);
 
     if (isRun) {

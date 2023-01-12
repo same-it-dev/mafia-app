@@ -1,4 +1,4 @@
-import { Button, GamerListSelect } from "common/components";
+import { Button, Dialog, GamerListSelect } from "common/components";
 import { useAbility } from "common/hooks";
 import { GamerPropsInterface } from "../../interfaces";
 
@@ -7,10 +7,13 @@ import { useGodfather } from "./hooks";
 export const Godfather = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
-  const { onChangeGamerId, onPushAbility, gamerIdValue } = useGodfather(
-    onFinishAbility,
-    gamer.id
-  );
+  const {
+    onChangeGamerId,
+    onPushAbility,
+    gamerIdValue,
+    abilityDataDialog,
+    alertDataDialog,
+  } = useGodfather(onFinishAbility, gamer.id);
 
   return (
     <>
@@ -24,6 +27,9 @@ export const Godfather = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
       <Button variant="contained" onClick={onPushAbility}>
         Використати здібність
       </Button>
+
+      <Dialog {...abilityDataDialog} confirm reject />
+      <Dialog {...alertDataDialog} next />
     </>
   );
 };

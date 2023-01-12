@@ -9,14 +9,17 @@ export const GamerCard = ({ children }: Props) => (
   <Box
     sx={{
       color: "#fff",
-      maxWidth: "375px",
+      maxWidth: "400px",
       textAlign: "center",
       margin: "0 auto",
-      minHeight: "520px",
+      minHeight: "620px",
       position: "relative",
       display: "flex",
       alignItems: "center",
       flexDirection: "column",
+      "& .gamer-push-ability": {
+        marginTop: "35px",
+      },
     }}
   >
     {children}

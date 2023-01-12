@@ -1,7 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import { useStartGame } from "common/hooks/useStartGame";
 import { Button } from "common/components";
+import { Box } from "@mui/material";
 
 export const StartGame = () => {
   const { isStartGame, startGame } = useStartGame();
@@ -9,16 +8,18 @@ export const StartGame = () => {
   if (isStartGame) return <></>;
 
   return (
-    <div
-      css={css`
-        display: flex;
-        justify-content: center;
-        padding-top: 60px;
-      `}
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        paddingTop: "60px",
+        maxWidth: "400px",
+        margin: "auto",
+      }}
     >
       <Button onClick={startGame} variant="contained">
         Почати гру
       </Button>
-    </div>
+    </Box>
   );
 };

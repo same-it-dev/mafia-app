@@ -7,6 +7,7 @@ import {
   usePushIncomingAbility,
   useCheckPersonTeam,
 } from "../../../hooks";
+import { useDialog } from "common/components";
 
 export const useSheriff = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -22,6 +23,9 @@ export const useSheriff = (
   const { pushAbility } = usePushIncomingAbility();
   const { registerNightAction } = useNightActions();
 
+  const abilityDataDialog = useDialog();
+  const alertDataDialog = useDialog();
+
   const onChangeGamerIdKilling = (id: string) => {
     setGamerIdCheckValue("");
     setGamerIdKillingValue(id);
@@ -32,49 +36,45 @@ export const useSheriff = (
     setGamerIdCheckValue(id);
   };
 
-  const onPushAbility = () => {
-    if (!pushedGamer && !gamerIdCheckValue) return alert("Оберіть здібність!");
-
+  const onConfirmAbility = () => {
     if (pushedGamer) {
-      // eslint-disable-next-line no-restricted-globals
-      const isRunAbility = confirm(
-        `Використати здібність в №-${pushedGamer.id} ${pushedGamer.role.name} ?`
-      );
-
-      if (isRunAbility) {
-        pushAbility(pushedGamer);
-        onFinishAbility("success");
-        registerNightAction({
-          abilityId: "killing",
-          gamerIdFrom: gamerId,
-          gamersIdsTo: [pushedGamer.id],
-        });
-      }
+      pushAbility(pushedGamer);
+      onFinishAbility("success");
+      registerNightAction({
+        abilityId: "killing",
+        gamerIdFrom: gamerId,
+        gamersIdsTo: [pushedGamer.id],
+      });
     }
 
     if (checkedGamerData) {
       const { isTeam, checkedGamer } = checkedGamerData;
 
-      // eslint-disable-next-line no-restricted-globals
-      const isRunAbility = confirm(
-        `Перевірити гравця №-${checkedGamer.id} ${checkedGamer.role.name}?`
-      );
-
-      if (isRunAbility) {
-        alert(
-          isTeam
-            ? `Гравець ${checkedGamer.role.name} грає за місто`
-            : `Гравець ${checkedGamer.role.name} не є гравцем за місто`
-        );
-
-        onFinishAbility("success");
-        registerNightAction({
-          abilityId: "checkPersonTeam",
-          gamerIdFrom: gamerId,
-          gamersIdsTo: [checkedGamer.id],
-        });
-      }
+      alertDataDialog.onRunDialog({
+        title: isTeam
+          ? `Гравець  грає за місто`
+          : `Гравець  не є гравцем за місто`,
+        icon: isTeam ? "yes" : "no",
+        onNext: () => {
+          onFinishAbility("success");
+          registerNightAction({
+            abilityId: "checkPersonTeam",
+            gamerIdFrom: gamerId,
+            gamersIdsTo: [checkedGamer.id],
+          });
+        },
+      });
     }
+  };
+
+  const onPushAbility = () => {
+    if (!pushedGamer && !gamerIdCheckValue)
+      return alertDataDialog.onRunDialog({ title: "Оберіть здібність !" });
+
+    abilityDataDialog.onRunDialog({
+      title: "Використати здібність ?",
+      onConfirm: onConfirmAbility,
+    });
   };
 
   return {
@@ -83,5 +83,7 @@ export const useSheriff = (
     onChangeGamerIdCheck,
     gamerIdCheckValue,
     onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
   };
 };

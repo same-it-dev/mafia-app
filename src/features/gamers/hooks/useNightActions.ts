@@ -11,7 +11,7 @@ export const useNightActions = () => {
       dispatch(setNightAction(action)),
 
     checkPrevNigthToGamerAction: (gamerId: number) => {
-      const prevNigth = nights.at(-2);
+      const prevNigth = nights[nights.length - 2];
 
       if (!prevNigth) return false;
 

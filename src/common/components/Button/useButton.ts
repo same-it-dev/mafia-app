@@ -13,6 +13,8 @@ const contained: SxPropsInterface = {
   textTransform: "uppercase",
   color: "secondary.contrastText",
   transition: "background 0.7s",
+  width: "100%",
+  margin: "40px 0",
   "&:hover": {
     backgroundColor: "secondary.dark",
   },

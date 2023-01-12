@@ -6,12 +6,6 @@ interface FilterProps {
   isActiveNight: boolean;
 }
 
-interface PushedGamerOptionsInterface {
-  isNeedClear?: boolean;
-  isActive?: boolean;
-  isBlocked?: boolean;
-}
-
 export const useGamers = (filter?: FilterProps) => {
   const dataGamers = useSelector(selectGames);
   const dispatch = useDispatch();
@@ -41,11 +35,5 @@ export const useGamers = (filter?: FilterProps) => {
 
     getGamerById: (gamerId: number) =>
       dataGamers.find(({ id }) => id === gamerId) as GamerInterface,
-
-    pushIncomingAbility: (
-      pushGamerId: number,
-      ability: string,
-      options?: PushedGamerOptionsInterface
-    ) => {},
   };
 };
