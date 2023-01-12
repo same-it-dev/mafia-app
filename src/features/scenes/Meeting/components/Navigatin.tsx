@@ -37,7 +37,7 @@ export const Navigation = ({
     {isRunNextScene && (
       <>
         <Button onClick={onRunNextScene} variant="contained" color="inherit">
-          Iндівідуальні голосування
+          Голосування
         </Button>
       </>
     )}

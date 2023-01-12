@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useStartGame } from "common/hooks/useStartGame";
+import { SceneCard } from "./components";
 import { useScene } from "./hooks";
 
 export const Scene = () => {
@@ -18,7 +19,9 @@ export const Scene = () => {
         background: #11131a;
       `}
     >
-      <SceneComponent />
+      <SceneCard>
+        <SceneComponent />
+      </SceneCard>
     </div>
   );
 };

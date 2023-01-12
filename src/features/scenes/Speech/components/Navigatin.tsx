@@ -23,6 +23,10 @@ export const Navigation = ({
       align-items: center;
       justify-content: center;
       gap: 15px;
+      .MuiButton-root {
+        margin: 0px;
+        max-width: 200px;
+      }
     `}
   >
     {isStart && (

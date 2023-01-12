@@ -39,7 +39,6 @@ export const SettingForm = ({
     <Box component="form" onSubmit={handleSubmit}>
       <Box
         sx={{
-          maxWidth: "500px",
           margin: "0 auto",
         }}
       >
