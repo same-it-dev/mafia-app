@@ -11,3 +11,4 @@ export * from "./StartGame";
 export * from "./Multiple";
 export * from "./GamerListSelect";
 export * from "./GamerListMultipleSelect";
+export * from "./Dialog";

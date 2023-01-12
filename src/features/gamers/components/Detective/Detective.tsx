@@ -1,4 +1,4 @@
-import { Button, GamerListMultipleSelect } from "common/components";
+import { Button, Dialog, GamerListMultipleSelect } from "common/components";
 import { useAbility } from "common/hooks";
 import { GamerPropsInterface } from "../../interfaces";
 
@@ -7,10 +7,12 @@ import { useDetective } from "./hooks";
 export const Detective = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
-  const { onChangeGamerIds, onPushAbility } = useDetective(
-    onFinishAbility,
-    gamer.id
-  );
+  const {
+    onChangeGamerIds,
+    onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
+  } = useDetective(onFinishAbility, gamer.id);
 
   return (
     <>
@@ -19,9 +21,16 @@ export const Detective = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
         onSelectGamers={onChangeGamerIds}
       />
 
-      <Button variant="contained" onDoubleClick={onPushAbility}>
+      <Button
+        className="gamer-push-ability"
+        variant="contained"
+        onClick={onPushAbility}
+      >
         Використати здібність
       </Button>
+
+      <Dialog {...abilityDataDialog} confirm reject />
+      <Dialog {...alertDataDialog} next />
     </>
   );
 };

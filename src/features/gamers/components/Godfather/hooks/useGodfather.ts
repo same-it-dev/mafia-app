@@ -5,6 +5,7 @@ import {
   useKilling,
   usePushIncomingAbility,
 } from "../../../hooks";
+import { useDialog } from "common/components";
 
 export const useGodfather = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -16,19 +17,32 @@ export const useGodfather = (
   const { pushAbility } = usePushIncomingAbility();
   const { registerNightAction } = useNightActions();
 
+  const abilityDataDialog = useDialog();
+  const alertDataDialog = useDialog();
+
   const onChangeGamerId = (id: string) => {
     setGamerIdValue(id);
   };
 
-  const onPushAbility = () => {
-    if (!pushedGamer) return alert("Оберіть гравця!");
+  const onConfirmAbility = () => {
+    if (pushedGamer) {
+      pushAbility(pushedGamer);
+      onFinishAbility("success");
+      registerNightAction({
+        abilityId: "killing",
+        gamerIdFrom: gamerId,
+        gamersIdsTo: [pushedGamer.id],
+      });
+    }
+  };
 
-    pushAbility(pushedGamer);
-    onFinishAbility("success");
-    registerNightAction({
-      abilityId: "killing",
-      gamerIdFrom: gamerId,
-      gamersIdsTo: [pushedGamer.id],
+  const onPushAbility = () => {
+    if (!pushedGamer)
+      return alertDataDialog.onRunDialog({ title: "Оберіть гравця !" });
+
+    abilityDataDialog.onRunDialog({
+      title: "Використати здібність ?",
+      onConfirm: onConfirmAbility,
     });
   };
 
@@ -36,5 +50,7 @@ export const useGodfather = (
     onChangeGamerId,
     gamerIdValue,
     onPushAbility,
+    abilityDataDialog,
+    alertDataDialog,
   };
 };
