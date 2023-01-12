@@ -6,7 +6,7 @@ export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
   const { gamers } = useGamers();
   const countGamers = gamers.length;
 
-  const gamerIndex = useRef(1);
+  const gamerIndex = useRef(0);
   const isGamerStarted = useRef(false);
   const { runScene } = useScene();
 
@@ -14,7 +14,8 @@ export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
 
   const onNextGamer = () => {
     let isNextGamer = true;
-    if (countGamers === gamerIndex.current) {
+    console.log(countGamers, gamerIndex.current);
+    if (countGamers === gamerIndex.current + 1) {
       return runScene("roleset", "Почати встановлення ролей ?");
     }
     if (isGamerStarted.current) {
@@ -23,12 +24,10 @@ export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
 
     if (!isNextGamer) return;
 
-    if (gamerIndex.current <= countGamers) {
-      onResetTimer();
-      isGamerStarted.current = true;
-      gamerIndex.current++;
-      setActiveGamer(gamers[gamerIndex.current]);
-    }
+    onResetTimer();
+    isGamerStarted.current = true;
+    gamerIndex.current++;
+    setActiveGamer(gamers[gamerIndex.current]);
   };
 
   const onStart = () => {
