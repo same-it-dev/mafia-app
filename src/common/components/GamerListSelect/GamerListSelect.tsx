@@ -18,7 +18,7 @@ export const GamerListSelect = ({
   const { gamers } = useGamers();
 
   return (
-    <Box>
+    <Box sx={{ width: "100%" }}>
       <Select
         label={label}
         value={value}

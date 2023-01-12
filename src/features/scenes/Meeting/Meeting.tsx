@@ -6,7 +6,7 @@ import { useMeeting } from "./hooks";
 
 export const Meeting = () => {
   const { isStart, runStart } = useStartScene();
-  const { timer, onResetTimer } = useCooldownTimer(3, isStart);
+  const { timer, onResetTimer } = useCooldownTimer(1, isStart);
   const { onFinishTimer, onStart, isRunNextScene, onRunNextScene } = useMeeting(
     onResetTimer,
     runStart

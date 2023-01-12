@@ -7,13 +7,14 @@ import {
   RoleSet,
   NightActions,
   Speech,
+  Voting,
 } from "features/scenes";
 
 const Scenes: Record<SceneTypes, () => JSX.Element> = {
   meeting: Meeting,
   cards: Acquaintance,
   roulette: Acquaintance,
-  voting: Acquaintance,
+  voting: Voting,
   setting: Setting,
   roleset: RoleSet,
   nightActions: NightActions,
