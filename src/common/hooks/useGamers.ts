@@ -41,11 +41,5 @@ export const useGamers = (filter?: FilterProps) => {
 
     getGamerById: (gamerId: number) =>
       dataGamers.find(({ id }) => id === gamerId) as GamerInterface,
-
-    pushIncomingAbility: (
-      pushGamerId: number,
-      ability: string,
-      options?: PushedGamerOptionsInterface
-    ) => {},
   };
 };

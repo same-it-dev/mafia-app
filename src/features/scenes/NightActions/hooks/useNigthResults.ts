@@ -1,7 +1,8 @@
-import { useGamers } from "common/hooks";
+import { useGamers, useScene } from "common/hooks";
 
 export const useNigthResults = () => {
   const { gamers, setGamers } = useGamers();
+  const { runScene } = useScene();
 
   const onSubmitNextScene = (): void => {
     setGamers(
@@ -11,6 +12,8 @@ export const useNigthResults = () => {
           : { ...gamer, incomingAbilities: [] }
       )
     );
+
+    runScene("speech", "Перейти до інвідуальних промов ?");
   };
 
   return {

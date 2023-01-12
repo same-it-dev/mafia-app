@@ -6,6 +6,7 @@ import {
   Setting,
   RoleSet,
   NightActions,
+  Speech,
 } from "features/scenes";
 
 const Scenes: Record<SceneTypes, () => JSX.Element> = {
@@ -17,6 +18,7 @@ const Scenes: Record<SceneTypes, () => JSX.Element> = {
   roleset: RoleSet,
   nightActions: NightActions,
   acquaintance: Acquaintance,
+  speech: Speech,
   day: function (): JSX.Element {
     throw new Error("Function not implemented.");
   },
