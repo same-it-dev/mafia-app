@@ -1,1 +1,1 @@
-export const Voting = () => <h2>Acquaintance</h2>
+export const Voting = () => <h2>Голосування</h2>;

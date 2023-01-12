@@ -13,7 +13,7 @@ export const useNigthResults = () => {
       )
     );
 
-    runScene("speech", "Перейти до інвідуальних промов ?");
+    runScene("meeting", "Перейти до балагану ?");
   };
 
   return {

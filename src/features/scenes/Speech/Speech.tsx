@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { Typography } from "@mui/material";
-import { Title, Cooldown, useCooldownTimer } from "common/components";
+import { Cooldown, useCooldownTimer } from "common/components";
 import { useStartScene } from "common/hooks";
 import { GamerCard, Navigation } from "./components";
 import { useSpeech } from "./hooks";

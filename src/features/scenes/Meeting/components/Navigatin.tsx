@@ -4,16 +4,18 @@ import { Button } from "common/components";
 
 interface Props {
   isStart: boolean;
-  onNextGamer: () => void;
   onResetTimer: () => void;
   onStart: () => void;
+  onRunNextScene: () => void;
+  isRunNextScene: boolean;
 }
 
 export const Navigation = ({
   isStart,
-  onNextGamer,
   onResetTimer,
   onStart,
+  onRunNextScene,
+  isRunNextScene,
 }: Props) => (
   <div
     css={css`
@@ -27,17 +29,21 @@ export const Navigation = ({
   >
     {isStart && (
       <>
-        <Button onClick={onResetTimer} variant="text" color="inherit">
-          Ще хвилина
+        <Button onClick={onResetTimer} variant="contained" color="inherit">
+          Повторити
         </Button>
-        <Button onClick={onNextGamer} variant="contained" color="inherit">
-          Продовжити
+      </>
+    )}
+    {isRunNextScene && (
+      <>
+        <Button onClick={onRunNextScene} variant="contained" color="inherit">
+          Iндівідуальні голосування
         </Button>
       </>
     )}
     {!isStart && (
       <Button onClick={onStart} variant="contained" color="inherit">
-        Почати промови
+        Почати балаган
       </Button>
     )}
   </div>
