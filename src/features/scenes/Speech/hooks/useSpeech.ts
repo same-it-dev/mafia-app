@@ -14,9 +14,9 @@ export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
 
   const onNextGamer = () => {
     let isNextGamer = true;
-    console.log(countGamers, gamerIndex.current);
+
     if (countGamers === gamerIndex.current + 1) {
-      return runScene("roleset", "Почати встановлення ролей ?");
+      return runScene("voting", "Перейти до голосування ?");
     }
     if (isGamerStarted.current) {
       isNextGamer = confirm("Ви дійсно бажаете перейти до наступного гравця ?");
