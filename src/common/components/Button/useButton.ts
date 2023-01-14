@@ -14,7 +14,7 @@ const contained: SxPropsInterface = {
   color: "secondary.contrastText",
   transition: "background 0.7s",
   width: "100%",
-  margin: "40px 0",
+  margin: "30px 0",
   "&:hover": {
     backgroundColor: "secondary.dark",
   },

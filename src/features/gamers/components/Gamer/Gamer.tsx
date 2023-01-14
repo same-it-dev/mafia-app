@@ -11,16 +11,16 @@ export interface Props {
 
 export const Gamer = ({ gamer, onFinishAbility }: Props) => {
   const GamerComponent = useGamer(gamer.role);
+  const gamerTitle =
+    gamer.id !== 100 ? `${gamer.role.name} №-${gamer.id}` : gamer.role.name;
 
   return (
     <GamerCard>
       <DisabledGamer gamer={gamer} onFinishAbility={onFinishAbility} />
-      <Typography variant="h2">
-        {gamer.role.name} №-{gamer.id}
-      </Typography>
+      <Typography variant="h2">{gamerTitle}</Typography>
 
       <Box
-        sx={{ position: "absolute", top: "110px" }}
+        sx={{ position: "absolute", top: "115px" }}
         component="img"
         src={`img/gamers/${gamer.role.id}.svg`}
       />

@@ -30,7 +30,6 @@ export const Acquaintance = () => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          margin-top: 30px;
         `}
       >
         <Cooldown timer={timer} onFinishTimer={onFinishTimer} />

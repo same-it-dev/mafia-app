@@ -1,6 +1,6 @@
 export * from "./Beauty";
 export * from "./Doctor";
-export * from "./Godfather";
+export * from "./Mafia";
 export * from "./Sheriff";
 export * from "./Admirer";
 export * from "./Detective";

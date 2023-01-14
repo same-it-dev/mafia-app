@@ -32,6 +32,10 @@ export const abilities: Record<
     id: "killing",
     name: "Вбивство",
   },
+  mafiaKilling: {
+    id: "mafiaKilling",
+    name: "Вбивство мафії",
+  },
   comparePersonsTeam: {
     id: "comparePersonsTeam",
     name: "Перевірка двох персон на команду",

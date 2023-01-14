@@ -7,7 +7,7 @@ import {
 } from "../../../hooks";
 import { useDialog } from "common/components";
 
-export const useGodfather = (
+export const useMafia = (
   onFinishAbility: OnFinishAbilityInterface,
   gamerId: number
 ) => {

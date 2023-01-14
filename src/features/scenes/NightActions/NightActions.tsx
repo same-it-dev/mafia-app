@@ -1,9 +1,10 @@
 import { Gamer } from "features/gamers";
 import { NightResults } from "./components";
-import { useNightActions } from "./hooks";
+import { useNightActions, useSetNightAction } from "./hooks";
 import { useNigthResults } from "./hooks/useNigthResults";
 
 export const NightActions = () => {
+  useSetNightAction();
   const { activeGamer, runNextGamer } = useNightActions();
   const { killedGamers, onSubmitNextScene } = useNigthResults();
 

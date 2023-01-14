@@ -13,7 +13,6 @@ const theme = createTheme({
   },
   typography: {
     h1: {
-      fontFamily: "Cuprum",
       fontStyle: "normal",
       fontWeight: 400,
       fontSize: "35px",
@@ -21,18 +20,17 @@ const theme = createTheme({
       letterSpacing: "0.05em",
       textTransform: "uppercase",
       textAlign: "center",
-      margin: "40px 0",
+      margin: "30px 0",
     },
     h2: {
-      fontFamily: "Cuprum",
       fontStyle: "normal",
       fontWeight: 400,
-      fontSize: "28px",
-      lineHeight: "28px",
+      fontSize: "26px",
+      lineHeight: "32px",
       letterSpacing: "0.05em",
       textTransform: "uppercase",
       textAlign: "center",
-      margin: "40px 0",
+      margin: "30px 0",
     },
   },
 });

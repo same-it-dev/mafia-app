@@ -40,7 +40,7 @@ export const Navigation = ({
     )}
     {!isStart && (
       <Button onClick={onStart} variant="contained" color="inherit">
-        Почати Знайомство
+        Почати
       </Button>
     )}
   </div>

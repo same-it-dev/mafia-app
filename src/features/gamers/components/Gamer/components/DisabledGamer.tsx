@@ -47,7 +47,8 @@ export const DisabledGamer = ({
       <Button
         onClick={() => onFinishAbility("fail")}
         sx={{
-          margin: "auto 15px",
+          margin: "auto",
+          maxWidth: "320px",
         }}
         variant="contained"
       >
