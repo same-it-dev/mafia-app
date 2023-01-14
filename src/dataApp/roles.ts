@@ -40,7 +40,7 @@ export const roles: RoleInterface[] = [
     type: "mafia",
     isActiveNight: true,
     isDisabled: false,
-    priority: 5,
+    priority: 4,
     desctiption: "Мафія просинається у ночі та робить постріл",
     abilities: ["killing"],
   },
@@ -56,6 +56,16 @@ export const roles: RoleInterface[] = [
     abilities: [],
   },
   {
+    id: "mafiosi",
+    name: "Мафіозі",
+    type: "mafia",
+    isActiveNight: false,
+    isDisabled: false,
+    priority: 5,
+    desctiption: "Грає за мафію",
+    abilities: [],
+  },
+  {
     id: "chameleon",
     name: "Хамелеон",
     type: "mafia",
@@ -64,16 +74,6 @@ export const roles: RoleInterface[] = [
     priority: 5,
     desctiption:
       "Грає за мафію при перевірці завжди буде як звичайний мешканець міста",
-    abilities: [],
-  },
-  {
-    id: "mafiosi",
-    name: "Мафіозі",
-    type: "mafia",
-    isActiveNight: true,
-    isDisabled: false,
-    priority: 5,
-    desctiption: "Грає за мафію",
     abilities: [],
   },
   {

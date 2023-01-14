@@ -11,32 +11,29 @@ export const useNightActions = () => {
     ({ isActive, role: { type } }) => isActive && type === "mafia"
   ) as GamerInterface;
 
-  const gamersList = gamers.reduce(
-    (ac, item) => {
-      if (!item.isActive || !item.role.isActiveNight) return ac;
-
-      if (mafiaRole.priority < item.role.priority && !ac.isAddMafia) {
-        ac.gamers.push({
-          id: 100,
-          isActive: true,
-          isBlocked: false,
-          isKilled: false,
-          incomingAbilities: [],
-          role: {
-            ...mafiaRole,
-            name: `${mafiaRole.name} Хрещений батько №-${godfather.id}`,
-          },
-        });
-        ac.isAddMafia = true;
-      }
-
-      ac.gamers.push(item);
-      return ac;
-    },
-    { gamers: [] as GamerInterface[], isAddMafia: false }
+  const gamersList = gamers.filter(
+    ({ isActive, role: { isActiveNight } }) => isActive && isActiveNight
   );
 
-  const activeGamer = gamersList.gamers[currentIndex];
+  gamersList.push({
+    id: 100,
+    isActive: true,
+    isBlocked: false,
+    isKilled: false,
+    incomingAbilities: [],
+    role: {
+      ...mafiaRole,
+      name: `${mafiaRole.name} Хрещений батько №-${godfather.id}`,
+    },
+  });
+
+  gamersList.sort((item1, item2) => {
+    return item1.role.priority - item2.role.priority;
+  });
+
+  console.log(gamersList);
+
+  const activeGamer = gamersList[currentIndex];
 
   const runNextGamer = () => {
     setCurrentIndex(currentIndex + 1);
