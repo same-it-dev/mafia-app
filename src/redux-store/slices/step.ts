@@ -5,7 +5,7 @@ import { StepInterface, SceneTypes } from "../../common/interfaces";
 
 // Define the initial state using that type
 const initialState: StepInterface = {
-  scene: "setting",
+  scene: "meeting",
 };
 
 export const stepSlice = createSlice({

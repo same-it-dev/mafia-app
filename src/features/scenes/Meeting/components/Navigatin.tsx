@@ -15,7 +15,6 @@ export const Navigation = ({
   onResetTimer,
   onStart,
   onRunNextScene,
-  isRunNextScene,
 }: Props) => (
   <div
     css={css`
@@ -32,15 +31,12 @@ export const Navigation = ({
         <Button onClick={onResetTimer} variant="contained" color="inherit">
           Повторити
         </Button>
-      </>
-    )}
-    {isRunNextScene && (
-      <>
         <Button onClick={onRunNextScene} variant="contained" color="inherit">
           Голосування
         </Button>
       </>
     )}
+
     {!isStart && (
       <Button onClick={onStart} variant="contained" color="inherit">
         Почати балаган
