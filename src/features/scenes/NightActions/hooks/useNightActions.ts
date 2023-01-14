@@ -6,7 +6,9 @@ export const useNightActions = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { gamers } = useGamers();
   const { rolesList } = useRoles();
+
   const mafiaRole = rolesList.find(({ id }) => id === "mafia") as RoleInterface;
+
   const godfather = gamers.find(
     ({ isActive, role: { type } }) => isActive && type === "mafia"
   ) as GamerInterface;
@@ -30,8 +32,6 @@ export const useNightActions = () => {
   gamersList.sort((item1, item2) => {
     return item1.role.priority - item2.role.priority;
   });
-
-  console.log(gamersList);
 
   const activeGamer = gamersList[currentIndex];
 
