@@ -12,7 +12,7 @@ export const StartGame = () => {
       sx={{
         display: "flex",
         justifyContent: "center",
-        paddingTop: "60px",
+        padding: "60px 15px",
         maxWidth: "400px",
         margin: "auto",
       }}

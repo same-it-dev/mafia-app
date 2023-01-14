@@ -17,7 +17,7 @@ export const Setting = () => {
   return (
     <Box
       sx={{
-        padding: "15px",
+        padding: "0 15px",
       }}
     >
       <Typography
@@ -36,10 +36,10 @@ export const Setting = () => {
         gamerItems={gamerItems}
         presets={presets}
       >
-        {countGamers ? <RolesList roles={roles} /> : ""}
         <Button variant="contained" type="submit">
           Зберегти
         </Button>
+        {countGamers ? <RolesList roles={roles} /> : ""}
       </SettingForm>
     </Box>
   );

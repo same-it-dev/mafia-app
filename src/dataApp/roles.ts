@@ -35,21 +35,31 @@ export const roles: RoleInterface[] = [
     abilities: ["healing"],
   },
   {
+    id: "mafia",
+    name: "Загальний хід мафії",
+    type: "mafia",
+    isActiveNight: true,
+    isDisabled: false,
+    priority: 5,
+    desctiption: "Мафія просинається у ночі та робить постріл",
+    abilities: ["killing"],
+  },
+  {
     id: "godfather",
     name: "Хрещений батько",
     type: "mafia",
     isActiveNight: true,
     isDisabled: false,
-    priority: 4,
+    priority: 5,
     desctiption:
       "Лідер мафії, Просинаеться у ночі. Вирішує разом зі своєю командою в кого мафія буде стріляти у ночі",
-    abilities: ["killing"],
+    abilities: [],
   },
   {
     id: "chameleon",
     name: "Хамелеон",
     type: "mafia",
-    isActiveNight: true,
+    isActiveNight: false,
     isDisabled: false,
     priority: 5,
     desctiption:
@@ -64,7 +74,7 @@ export const roles: RoleInterface[] = [
     isDisabled: false,
     priority: 5,
     desctiption: "Грає за мафію",
-    abilities: ["killing"],
+    abilities: [],
   },
   {
     id: "lawyer",

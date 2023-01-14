@@ -4,7 +4,7 @@ import { GamerPropsInterface } from "features/gamers";
 import {
   Beauty,
   Doctor,
-  Godfather,
+  Mafia,
   Sheriff,
   Admirer,
   Detective,
@@ -18,11 +18,8 @@ const gamers: Record<RoleIdTypes, (props: GamerPropsInterface) => JSX.Element> =
     doctor: Doctor,
     admirer: Admirer,
     detective: Detective,
-    godfather: Godfather,
-    mafiosi: Godfather,
+    mafia: Mafia,
     maniac: Maniac,
-    peaceful: Godfather,
-    scrounger: Godfather,
   };
 
 export const useGamer = (role: RoleInterface) => gamers[role.id];

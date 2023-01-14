@@ -2,9 +2,9 @@ import { Button, Dialog, GamerListSelect } from "common/components";
 import { useAbility } from "common/hooks";
 import { GamerPropsInterface } from "../../interfaces";
 
-import { useGodfather } from "./hooks";
+import { useMafia } from "./hooks";
 
-export const Godfather = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
+export const Mafia = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
   const {
@@ -13,7 +13,7 @@ export const Godfather = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
     gamerIdValue,
     abilityDataDialog,
     alertDataDialog,
-  } = useGodfather(onFinishAbility, gamer.id);
+  } = useMafia(onFinishAbility, gamer.id);
 
   return (
     <>

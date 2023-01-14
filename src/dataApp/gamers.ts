@@ -29,12 +29,12 @@ export const gamers: GamerInterface[] = [
       id: "godfather",
       name: "Хрещений батько",
       type: "mafia",
-      isActiveNight: true,
+      isActiveNight: false,
       isDisabled: false,
       priority: 4,
       desctiption:
         "Лідер мафії, Просинаеться у ночі. Вирішує разом зі своєю командою в кого мафія буде стріляти у ночі",
-      abilities: ["killing"],
+      abilities: [],
     },
   },
   {
@@ -65,7 +65,7 @@ export const gamers: GamerInterface[] = [
       id: "mafiosi",
       name: "Мафіозі",
       type: "mafia",
-      isActiveNight: true,
+      isActiveNight: false,
       isDisabled: false,
       priority: 5,
       desctiption:

@@ -33,7 +33,7 @@ export const GamerListSelect = ({
             key={id}
             value={id}
           >
-            <Box component="span">№-{id}</Box>{" "}
+            <Box component="span">№-{id}</Box>
             <Box
               component="span"
               sx={{
