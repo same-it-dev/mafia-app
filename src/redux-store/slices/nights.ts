@@ -22,7 +22,7 @@ export const nightsSlice = createSlice({
   },
 });
 
-export const { setNightAction } = nightsSlice.actions;
+export const { setNightAction, setNight } = nightsSlice.actions;
 
 export const selectNights = (state: RootState) => state.nights;
 
