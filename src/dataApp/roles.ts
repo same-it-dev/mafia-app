@@ -48,7 +48,7 @@ export const roles: RoleInterface[] = [
     id: "godfather",
     name: "Хрещений батько",
     type: "mafia",
-    isActiveNight: true,
+    isActiveNight: false,
     isDisabled: false,
     priority: 5,
     desctiption:
