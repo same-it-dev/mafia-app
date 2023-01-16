@@ -15,7 +15,7 @@ export const GamerCard = ({ gamer }: Props) => {
         max-width: 400px;
       `}
     >
-      <img src={gamer % 2 ? "./img/gamer.svg" : "./img/gamer2.svg"} alt="img" />
+      <img src="/img/gamer.svg" alt="img" />
       <h2
         css={css`
           font-size: 32px;

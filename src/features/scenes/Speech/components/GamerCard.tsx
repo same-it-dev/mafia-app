@@ -31,7 +31,7 @@ export const GamerCard = ({ gamer }: Props) => {
       <Box
         sx={{ position: "absolute", top: "80px" }}
         component="img"
-        src={`img/gamers/${gamer.role.id}.svg`}
+        src={`img/gamer.svg`}
       />
     </div>
   );

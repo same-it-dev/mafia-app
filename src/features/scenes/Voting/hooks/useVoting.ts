@@ -27,7 +27,7 @@ export const useVoting = () => {
   const onDeleteGamer = () => {
     if (!gamerIdValue)
       return alertDataDialog.onRunDialog({ title: "Оберіть гравця" });
-
+    console.log(gamerIdValue);
     deleteDataGamerDialog.onRunDialog({
       title: `Ви дійсно бажаєте видалити гравця ?`,
       onConfirm: () => {

@@ -15,7 +15,7 @@ export const GamerListSelect = ({
   value,
   onSelectGamer,
 }: Props) => {
-  const { gamers } = useGamers();
+  const { gamers } = useGamers({ sortByGamerId: true });
 
   return (
     <Box sx={{ width: "100%" }}>

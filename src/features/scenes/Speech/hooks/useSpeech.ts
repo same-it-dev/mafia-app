@@ -3,16 +3,15 @@ import { useGamers, useScene } from "common/hooks";
 import { useRef, useState } from "react";
 
 export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
-  const { gamers } = useGamers();
-  const sortedGamers = gamers.sort((g1, g2) => g1.id - g2.id);
+  const { gamers } = useGamers({ sortByGamerId: true });
 
-  const countGamers = sortedGamers.length;
+  const countGamers = gamers.length;
 
   const gamerIndex = useRef(0);
   const isGamerStarted = useRef(false);
   const { runScene } = useScene();
 
-  const [activeGamer, setActiveGamer] = useState(sortedGamers[0]);
+  const [activeGamer, setActiveGamer] = useState(gamers[0]);
 
   const onNextGamer = () => {
     let isNextGamer = true;
@@ -29,7 +28,7 @@ export const useSpeech = (onResetTimer: () => void, runStart: () => void) => {
     onResetTimer();
     isGamerStarted.current = true;
     gamerIndex.current++;
-    setActiveGamer(sortedGamers[gamerIndex.current]);
+    setActiveGamer(gamers[gamerIndex.current]);
   };
 
   const onStart = () => {
