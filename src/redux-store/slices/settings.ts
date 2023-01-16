@@ -15,9 +15,9 @@ interface SettingState {
 // Define the initial state using that type
 const initialState: SettingState = {
   isStartGame: false,
-  countGamers: presetTypes[0].type,
+  countGamers: presetTypes[4].type,
   gameCycle: 1,
-  preset: presetTypes[0].presets[0],
+  preset: presetTypes[4].presets[2],
 };
 
 export const settingSlice = createSlice({

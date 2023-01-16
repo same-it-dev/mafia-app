@@ -11,7 +11,7 @@ export const RoleItem = ({ title }: Props) => (
       borderRadius: "4px",
       borderColor: "primary.contrastText",
       color: "primary.contrastText",
-      padding: "15px",
+      padding: "10px",
       margin: "5px",
     }}
   >

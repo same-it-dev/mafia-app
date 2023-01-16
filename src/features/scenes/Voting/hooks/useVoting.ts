@@ -7,11 +7,21 @@ export const useVoting = () => {
   const { runScene } = useScene();
   const { gamers, setGamers } = useGamers();
 
+  const startNightDataDialog = useDialog();
   const deleteDataGamerDialog = useDialog();
   const alertDataDialog = useDialog();
 
   const onSelectGamer = (id: string) => {
     setGamerIdValue(id);
+  };
+
+  const onStartNight = () => {
+    startNightDataDialog.onRunDialog({
+      title: "Почати ніч ?",
+      onConfirm: () => {
+        runScene("nightActions");
+      },
+    });
   };
 
   const onDeleteGamer = () => {
@@ -28,9 +38,6 @@ export const useVoting = () => {
               : gamer
           )
         );
-        setTimeout(() => {
-          runScene("nightActions", "Почати ніч ?");
-        }, 500);
       },
     });
   };
@@ -39,7 +46,9 @@ export const useVoting = () => {
     gamerIdValue,
     onSelectGamer,
     onDeleteGamer,
+    onStartNight,
     deleteDataGamerDialog,
     alertDataDialog,
+    startNightDataDialog,
   };
 };

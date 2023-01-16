@@ -26,7 +26,7 @@ export const GamerCard = ({ gamer }: Props) => {
         variant="h4"
         color="primary.contrastText"
       >
-        №-{gamer.id} {gamer.role.name}
+        №-{gamer.id}
       </Typography>
       <Box
         sx={{ position: "absolute", top: "80px" }}

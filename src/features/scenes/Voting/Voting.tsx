@@ -7,7 +7,9 @@ export const Voting = () => {
     gamerIdValue,
     onSelectGamer,
     onDeleteGamer,
+    onStartNight,
     deleteDataGamerDialog,
+    startNightDataDialog,
     alertDataDialog,
   } = useVoting();
 
@@ -36,16 +38,38 @@ export const Voting = () => {
         value={gamerIdValue}
         onSelectGamer={onSelectGamer}
       />
-      <Button
+      <Box
         sx={{
+          display: "flex",
           width: "100%",
-          marginTop: "30px",
+          justifyContent: "space-between",
+          "& .MuiButton-root": {
+            maxWidth: "150px",
+          },
         }}
-        variant="contained"
-        onClick={onDeleteGamer}
       >
-        Видалити
-      </Button>
+        <Button
+          sx={{
+            width: "100%",
+            marginTop: "30px",
+          }}
+          variant="contained"
+          onClick={onStartNight}
+        >
+          Почати ніч
+        </Button>
+        <Button
+          sx={{
+            width: "100%",
+            marginTop: "30px",
+          }}
+          variant="contained"
+          onClick={onDeleteGamer}
+        >
+          Видалити
+        </Button>
+      </Box>
+      <Dialog {...startNightDataDialog} confirm reject />
       <Dialog {...deleteDataGamerDialog} confirm reject />
       <Dialog {...alertDataDialog} next />
     </Box>

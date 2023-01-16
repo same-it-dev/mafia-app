@@ -6,11 +6,8 @@ export const useScene = () => {
   const dispatch = useDispatch();
 
   const runScene = (sceneType: SceneTypes, message?: string) => {
-    const isRun = confirm(message);
-
-    if (isRun) {
-      dispatch(setScene(sceneType));
-    }
+    if (message) alert(message);
+    dispatch(setScene(sceneType));
   };
 
   return { runScene };
