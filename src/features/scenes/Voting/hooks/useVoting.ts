@@ -38,6 +38,13 @@ export const useVoting = () => {
               : gamer
           )
         );
+
+        startNightDataDialog.onRunDialog({
+          title: "Почати ніч ?",
+          onConfirm: () => {
+            runScene("nightActions");
+          },
+        });
       },
     });
   };
