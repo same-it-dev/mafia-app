@@ -31,7 +31,7 @@ export const useRoleSet = () => {
   useEffect(() => {
     if (!gamers.length) {
       setGamers(configuredGamers);
-      runScene("nightActions", "Перейти до наступної сцени ?");
+      runScene("meeting", "Перейти до балагану ?");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gamers]);
@@ -62,17 +62,21 @@ export const useRoleSet = () => {
   ) => {
     resetForm();
 
-    const gamerRole: any = rolesList.find(({ id }) => id === roleId);
+    const selectedRole: any = roles.find(({ id }) => id === Number(roleId));
+
+    const gamerRole: any = rolesList.find(
+      ({ id }) => id === selectedRole.roleTypeId
+    );
 
     const gamer = createGamer(Number(gamerId), gamerRole);
 
-    setRoles(roles.filter(({ roleTypeId }) => roleTypeId !== roleId));
+    setRoles(roles.filter(({ id }) => id !== Number(roleId)));
     setSettingsGamers(gamers.filter(({ id }) => id !== Number(gamerId)));
     setConfiguredGamers([...configuredGamers, gamer]);
   };
 
   return {
-    roles,
+    roles: roles.filter(({ roleTypeId }) => roleTypeId !== "peaceful"),
     gamers,
     onSubmit,
   };

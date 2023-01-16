@@ -1,5 +1,3 @@
-import { RoleInterface, GamerInterface } from "common/interfaces";
-
 export interface GamerFormValuesInterface {
   roleId: string;
   gamerId: string;

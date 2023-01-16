@@ -43,8 +43,8 @@ export const GamerForm = ({ onSubmit, roles, gamers, children }: Props) => {
           error={touched.roleId && Boolean(errors.roleId)}
           errorText={errors.roleId}
         >
-          {roles.map(({ id, name, roleTypeId }) => (
-            <MenuItem key={id} value={roleTypeId}>
+          {roles.map(({ id, name }) => (
+            <MenuItem key={id} value={id}>
               {name}
             </MenuItem>
           ))}
