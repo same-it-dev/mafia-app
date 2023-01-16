@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import { GamerInterface } from "common/interfaces";
-//import { gamers } from "dataApp/gamers";
+import { gamers } from "dataApp/gamers";
 
 // Define the initial state using that type
-const initialState: GamerInterface[] = [];
+const initialState: GamerInterface[] = gamers;
 
 export const gamersSlice = createSlice({
   name: "gamers",
