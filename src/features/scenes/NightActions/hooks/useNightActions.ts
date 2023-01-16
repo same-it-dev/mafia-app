@@ -17,17 +17,19 @@ export const useNightActions = () => {
     ({ isActive, role: { isActiveNight } }) => isActive && isActiveNight
   );
 
-  gamersList.push({
-    id: 100,
-    isActive: true,
-    isBlocked: false,
-    isKilled: false,
-    incomingAbilities: [],
-    role: {
-      ...mafiaRole,
-      name: `${mafiaRole.name} Хрещений батько №-${godfather.id}`,
-    },
-  });
+  if (godfather) {
+    gamersList.push({
+      id: 100,
+      isActive: true,
+      isBlocked: false,
+      isKilled: false,
+      incomingAbilities: [],
+      role: {
+        ...mafiaRole,
+        name: `${mafiaRole.name} Хрещений батько №-${godfather.id}`,
+      },
+    });
+  }
 
   gamersList.sort((item1, item2) => {
     return item1.role.priority - item2.role.priority;

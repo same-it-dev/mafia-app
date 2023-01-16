@@ -54,9 +54,9 @@ export const Voting = () => {
             marginTop: "30px",
           }}
           variant="contained"
-          onClick={onDeleteGamer}
+          onClick={onStartNight}
         >
-          Видалити
+          Почати ніч
         </Button>
         <Button
           sx={{
@@ -64,9 +64,9 @@ export const Voting = () => {
             marginTop: "30px",
           }}
           variant="contained"
-          onClick={onStartNight}
+          onClick={onDeleteGamer}
         >
-          Почати ніч
+          Видалити
         </Button>
       </Box>
       <Dialog {...startNightDataDialog} confirm reject />
