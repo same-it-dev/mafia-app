@@ -9,6 +9,7 @@ import {
   Admirer,
   Detective,
   Maniac,
+  Scrounger,
 } from "features/gamers/components";
 
 const gamers: Record<
@@ -22,6 +23,7 @@ const gamers: Record<
   detective: Detective,
   mafia: Mafia,
   maniac: Maniac,
+  scrounger: Scrounger,
 };
 
 export const useGamer = (role: RoleInterface) => gamers[role.id];

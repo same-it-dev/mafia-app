@@ -8,6 +8,24 @@ export const gamers: GamerInterface[] = [
     isBlocked: false,
     incomingAbilities: [],
     role: {
+      id: "scrounger",
+      type: "mafia",
+      name: "Крадій",
+      isActiveNight: true,
+      isDisabled: false,
+      priority: 2,
+      desctiption:
+        "Грає за мафію, Просинаеться у ночі. краде можливість у гравця зробити свій хід",
+      abilities: ["block"],
+    },
+  },
+  {
+    id: 2,
+    isActive: true,
+    isKilled: false,
+    isBlocked: false,
+    incomingAbilities: [],
+    role: {
       id: "doctor",
       name: "Лікарка",
       type: "city",
@@ -20,7 +38,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 2,
+    id: 3,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -38,7 +56,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 3,
+    id: 4,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -56,7 +74,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 4,
+    id: 5,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -74,7 +92,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 5,
+    id: 6,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -92,7 +110,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 6,
+    id: 7,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -110,7 +128,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 7,
+    id: 8,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -128,7 +146,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 8,
+    id: 9,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -146,7 +164,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 9,
+    id: 10,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -163,7 +181,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 10,
+    id: 11,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -180,7 +198,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 11,
+    id: 12,
     isActive: true,
     isKilled: false,
     isBlocked: false,

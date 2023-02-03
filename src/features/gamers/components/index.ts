@@ -5,4 +5,5 @@ export * from "./Sheriff";
 export * from "./Admirer";
 export * from "./Detective";
 export * from "./Maniac";
+export * from "./Scrounger";
 export * from "./Gamer";
