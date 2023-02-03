@@ -15,6 +15,8 @@ export type RoleIdTypes =
   | "beauty"
   | "doctor"
   | "godfather"
+  | "mafia"
+  | "lawyer"
   | "chameleon"
   | "scrounger"
   | "mafiosi"
@@ -22,8 +24,9 @@ export type RoleIdTypes =
   | "maniac"
   | "detective"
   | "admirer"
-  | "peaceful"
-  | string;
+  | "bomb"
+  | "angeldeath"
+  | "peaceful";
 
 export type colorTypes =
   | "primary"

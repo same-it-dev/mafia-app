@@ -132,6 +132,28 @@ export const roles: RoleInterface[] = [
     abilities: ["checkSheriffRole"],
   },
   {
+    id: "bomb",
+    name: "Вибухівка",
+    type: "city",
+    isActiveNight: false,
+    isDisabled: false,
+    priority: 11,
+    desctiption:
+      "Грає за мирних, якщо бомба вибуває у будь який спосіб з гри вона вибухає і вбиває два два номери біля себе ",
+    abilities: ["killing"],
+  },
+  {
+    id: "angeldeath",
+    name: "Янгол смерті",
+    type: "city",
+    isActiveNight: false,
+    isDisabled: false,
+    priority: 12,
+    desctiption:
+      "Грає за мирних, якщо Ангел вибуває у будь який спосіб з гри він забирає одного гравця з собою",
+    abilities: ["killing"],
+  },
+  {
     id: "peaceful",
     name: "Мирний мешканець",
     type: "city",
