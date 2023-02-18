@@ -3,11 +3,11 @@ import { useState } from "react";
 
 import {
   useNightActions,
-  useKilling,
-  usePushIncomingAbility,
   useCheckPersonTeam,
+  usePushIncomingAbilityNew,
 } from "../../../hooks";
 import { useDialog } from "common/components";
+import { useGamers } from "common/hooks";
 
 export const useSheriff = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -16,11 +16,12 @@ export const useSheriff = (
   const [gamerIdKillingValue, setGamerIdKillingValue] = useState("");
   const [gamerIdCheckValue, setGamerIdCheckValue] = useState("");
 
-  const pushedGamer = useKilling(Number(gamerIdKillingValue));
+  const { getGamerById } = useGamers();
+  const pushedGamer = getGamerById(Number(gamerIdKillingValue));
+  const { pushIncomingAbility } = usePushIncomingAbilityNew();
 
   const checkedGamerData = useCheckPersonTeam(Number(gamerIdCheckValue));
 
-  const { pushAbility } = usePushIncomingAbility();
   const { registerNightAction } = useNightActions();
 
   const abilityDataDialog = useDialog();
@@ -38,7 +39,7 @@ export const useSheriff = (
 
   const onConfirmAbility = () => {
     if (pushedGamer) {
-      pushAbility(pushedGamer);
+      pushIncomingAbility({ pushedGamer, abilityId: "killing" });
       onFinishAbility("success");
       registerNightAction({
         abilityId: "killing",

@@ -1,11 +1,8 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
 import { useState } from "react";
-import {
-  useNightActions,
-  useKilling,
-  usePushIncomingAbility,
-} from "../../../hooks";
+import { useNightActions, usePushIncomingAbilityNew } from "../../../hooks";
 import { useDialog } from "common/components";
+import { useGamers } from "common/hooks";
 
 export const useMafia = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -13,8 +10,11 @@ export const useMafia = (
 ) => {
   const [gamerIdValue, setGamerIdValue] = useState("");
 
-  const pushedGamer = useKilling(Number(gamerIdValue));
-  const { pushAbility } = usePushIncomingAbility();
+  const { getGamerById } = useGamers();
+
+  const pushedGamer = getGamerById(Number(gamerIdValue));
+
+  const { pushIncomingAbility } = usePushIncomingAbilityNew();
   const { registerNightAction } = useNightActions();
 
   const abilityDataDialog = useDialog();
@@ -26,7 +26,7 @@ export const useMafia = (
 
   const onConfirmAbility = () => {
     if (pushedGamer) {
-      pushAbility(pushedGamer);
+      pushIncomingAbility({ abilityId: "killing", pushedGamer });
       onFinishAbility("success");
       registerNightAction({
         abilityId: "killing",

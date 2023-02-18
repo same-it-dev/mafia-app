@@ -1,23 +1,21 @@
 import { GamerInterface } from "common/interfaces";
 
 const bombStrategy = (
-  gamerId: number,
+  pushedGamer: GamerInterface,
   gamers: GamerInterface[]
 ): GamerInterface[] => {
-  const gamer = gamers.find(({ id }) => id === gamerId) as GamerInterface;
-
   const gamerIds = gamers.map(({ id }) => id);
 
   const afterGamer = gamers.find(({ id }) =>
-    gamerIds[gamerIds.length - 1] === gamer.id
+    gamerIds[gamerIds.length - 1] === pushedGamer.id
       ? id === gamerIds[0]
-      : id === gamer.id + 1
+      : id === pushedGamer.id + 1
   );
 
   const prevGamer = gamers.find(({ id }) =>
-    gamerIds[gamerIds[0]] === gamer.id
+    gamerIds[gamerIds[0]] === pushedGamer.id
       ? id === gamerIds[gamerIds[gamerIds.length - 1]]
-      : id === gamer.id - 1
+      : id === pushedGamer.id - 1
   );
 
   const getGamer = (
@@ -35,9 +33,9 @@ const bombStrategy = (
   return gamers.map((current) =>
     current.id === prevGamer?.id ||
     current.id === afterGamer?.id ||
-    current.id === gamer.id
+    current.id === pushedGamer.id
       ? {
-          ...getGamer(current.id, gamer, prevGamer, afterGamer),
+          ...getGamer(current.id, pushedGamer, prevGamer, afterGamer),
           isKilled: !current.incomingAbilities.includes("healing"),
           incomingAbilities: current.incomingAbilities.includes("healing")
             ? current.incomingAbilities.filter((value) => value !== "healing")
@@ -48,17 +46,13 @@ const bombStrategy = (
 };
 
 const defaultStrategy = (
-  gamerId: number,
+  pushedGamer: GamerInterface,
   gamers: GamerInterface[]
 ): GamerInterface[] => {
-  const currentGamer = gamers.find(
-    ({ id }) => id === gamerId
-  ) as GamerInterface;
-
-  const isHealing = currentGamer.incomingAbilities.includes("healing");
+  const isHealing = pushedGamer.incomingAbilities.includes("healing");
 
   return gamers.map((gamer) =>
-    gamer.id === gamerId
+    gamer.id === pushedGamer.id
       ? {
           ...gamer,
           isKilled: !isHealing,
@@ -71,7 +65,7 @@ const defaultStrategy = (
 };
 
 type StrategyType = (
-  gamerId: number,
+  pushedGamer: GamerInterface,
   gamers: GamerInterface[]
 ) => GamerInterface[];
 
@@ -81,11 +75,10 @@ const strategies: Record<string, StrategyType> = {
 };
 
 export const killingStrategy = (
-  name: string,
-  gamerId: number,
+  pushedGamer: GamerInterface,
   gamers: GamerInterface[]
 ) => {
-  const strategy = strategies[name] ?? strategies["default"];
+  const strategy = strategies[pushedGamer.role.id] ?? strategies["default"];
 
-  return strategy(gamerId, gamers);
+  return strategy(pushedGamer, gamers);
 };

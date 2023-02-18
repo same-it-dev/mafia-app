@@ -1,16 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
-import { AbilityTypes, GamerInterface, RoleIdTypes } from "common/interfaces";
+import { AbilityTypes, GamerInterface } from "common/interfaces";
 import { gamers } from "dataApp/gamers";
 import { killingStrategy } from "./strategies";
 
 // Define the initial state using that type
 const initialState: GamerInterface[] = gamers;
 
-interface PushIncomingAbilityInterface {
-  gamerId: number | number[];
-  gamerRoleId: RoleIdTypes;
+export interface PushIncomingAbilityInterface {
+  pushedGamer: GamerInterface;
   abilityId: AbilityTypes;
 }
 
@@ -26,16 +25,16 @@ export const gamersSlice = createSlice({
       state,
       action: PayloadAction<PushIncomingAbilityInterface>
     ) => {
-      const { abilityId, gamerId, gamerRoleId } = action.payload;
+      const { abilityId, pushedGamer } = action.payload;
 
-      if (abilityId === "killing" && typeof gamerId === "number") {
-        return killingStrategy(gamerRoleId, gamerId, state);
+      if (abilityId === "killing") {
+        return killingStrategy(pushedGamer, state);
       }
     },
   },
 });
 
-export const { setGamers } = gamersSlice.actions;
+export const { setGamers, pushIncomingAbility } = gamersSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectGames = (state: RootState) => state.games;

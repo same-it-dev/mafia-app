@@ -163,27 +163,27 @@ export const gamers: GamerInterface[] = [
   //     abilities: ["comparePersonsTeam"],
   //   },
   // },
-  {
-    id: 4,
-    isActive: true,
-    isKilled: false,
-    isBlocked: false,
-    incomingAbilities: [],
-    role: {
-      id: "admirer",
-      name: "Фанатка",
-      type: "city",
-      isActiveNight: true,
-      isDisabled: false,
-      priority: 10,
-      desctiption:
-        "Грає за мирних, просинається у ночі та обирає одного гравця, якщо цей гравець шериф то дізнається його роль",
-      abilities: ["checkSheriffRole"],
-    },
-  },
+  // {
+  //   id: 4,
+  //   isActive: true,
+  //   isKilled: false,
+  //   isBlocked: false,
+  //   incomingAbilities: [],
+  //   role: {
+  //     id: "admirer",
+  //     name: "Фанатка",
+  //     type: "city",
+  //     isActiveNight: true,
+  //     isDisabled: false,
+  //     priority: 10,
+  //     desctiption:
+  //       "Грає за мирних, просинається у ночі та обирає одного гравця, якщо цей гравець шериф то дізнається його роль",
+  //     abilities: ["checkSheriffRole"],
+  //   },
+  // },
 
   {
-    id: 5,
+    id: 4,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -200,7 +200,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 6,
+    id: 5,
     isActive: true,
     isKilled: false,
     isBlocked: false,
@@ -217,7 +217,7 @@ export const gamers: GamerInterface[] = [
     },
   },
   {
-    id: 7,
+    id: 6,
     isActive: true,
     isKilled: false,
     isBlocked: false,
