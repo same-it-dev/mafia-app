@@ -11,10 +11,10 @@ export const useMafia = (
   const [gamerIdValue, setGamerIdValue] = useState("");
 
   const { getGamerById } = useGamers();
-
   const pushedGamer = getGamerById(Number(gamerIdValue));
 
   const { pushIncomingAbility } = usePushIncomingAbilityNew();
+
   const { registerNightAction } = useNightActions();
 
   const abilityDataDialog = useDialog();

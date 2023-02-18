@@ -1,11 +1,8 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
 import { useState } from "react";
-import {
-  useNightActions,
-  useHealing,
-  usePushIncomingAbility,
-} from "../../../hooks";
+import { useNightActions, usePushIncomingAbilityNew } from "../../../hooks";
 import { useDialog } from "common/components";
+import { useGamers } from "common/hooks";
 
 export const useDoctor = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -13,8 +10,11 @@ export const useDoctor = (
 ) => {
   const [gamerIdValue, setGamerIdValue] = useState("");
 
-  const pushedGamer = useHealing(Number(gamerIdValue));
-  const { pushAbility } = usePushIncomingAbility();
+  const { pushIncomingAbility } = usePushIncomingAbilityNew();
+
+  const { getGamerById } = useGamers();
+  const pushedGamer = getGamerById(Number(gamerIdValue));
+
   const { registerNightAction, checkPrevNigthToGamerAction } =
     useNightActions();
 
@@ -27,7 +27,7 @@ export const useDoctor = (
 
   const onConfirmAbility = () => {
     if (pushedGamer) {
-      pushAbility(pushedGamer);
+      pushIncomingAbility({ pushedGamer, abilityId: "healing" });
       onFinishAbility("success");
       registerNightAction({
         abilityId: "healing",
