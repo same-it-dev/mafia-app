@@ -1,11 +1,8 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
 import { useState } from "react";
-import {
-  useBlock,
-  useNightActions,
-  usePushIncomingAbility,
-} from "../../../hooks";
+import { useNightActions, usePushIncomingAbilityNew } from "../../../hooks";
 import { useDialog } from "common/components";
+import { useGamers } from "common/hooks";
 
 export const useScrounger = (
   onFinishAbility: OnFinishAbilityInterface,
@@ -14,9 +11,11 @@ export const useScrounger = (
   const [gamerIdValue, setGamerIdValue] = useState("");
 
   const { registerNightAction } = useNightActions();
-  const { pushAbility } = usePushIncomingAbility();
 
-  const pushedGamer = useBlock(Number(gamerIdValue));
+  const { getGamerById } = useGamers();
+  const pushedGamer = getGamerById(Number(gamerIdValue));
+
+  const { pushIncomingAbility } = usePushIncomingAbilityNew();
 
   const abilityDataDialog = useDialog();
   const alertDataDialog = useDialog();
@@ -27,7 +26,7 @@ export const useScrounger = (
 
   const onConfirmAbility = () => {
     if (pushedGamer) {
-      pushAbility(pushedGamer);
+      pushIncomingAbility({ pushedGamer, abilityId: "block" });
       onFinishAbility("success");
       registerNightAction({
         abilityId: "block",

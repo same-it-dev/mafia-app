@@ -3,7 +3,11 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../../store";
 import { AbilityTypes, GamerInterface } from "common/interfaces";
 import { gamers } from "dataApp/gamers";
-import { healingStrategy, killingStrategy } from "./strategies";
+import {
+  blockingStrategy,
+  healingStrategy,
+  killingStrategy,
+} from "./strategies";
 
 // Define the initial state using that type
 const initialState: GamerInterface[] = gamers;
@@ -33,6 +37,10 @@ export const gamersSlice = createSlice({
 
       if (abilityId === "healing") {
         return healingStrategy(pushedGamer, state);
+      }
+
+      if (abilityId === "block") {
+        return blockingStrategy(pushedGamer, state);
       }
     },
   },
