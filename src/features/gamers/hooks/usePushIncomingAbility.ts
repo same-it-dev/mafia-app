@@ -4,14 +4,20 @@ import { GamerInterface } from "common/interfaces";
 const pushBombAblity = (
   gamer: GamerInterface,
   gamers: GamerInterface[],
+  gamerIds: number[],
   setGamers: (gamers: GamerInterface[]) => void
 ) => {
-  const prevGamer = gamers.find(({ id }) => id === gamer.id - 1);
-  const afterGamer = gamers.find(({ id }) => id === gamer.id + 1);
+  const afterGamer = gamers.find(({ id }) =>
+    gamerIds[gamerIds.length - 1] === gamer.id
+      ? id === gamerIds[0]
+      : id === gamer.id + 1
+  );
 
-  console.log(gamer);
-  console.log(prevGamer);
-  console.log(afterGamer);
+  const prevGamer = gamers.find(({ id }) =>
+    gamerIds[gamerIds[0]] === gamer.id
+      ? id === gamerIds[gamerIds[gamerIds.length - 1]]
+      : id === gamer.id - 1
+  );
 
   const getGamer = (
     currentId: number | undefined,
@@ -43,7 +49,7 @@ const pushBombAblity = (
 };
 
 export const usePushIncomingAbility = () => {
-  const { gamers, setGamers } = useGamers({ sortByGamerId: true });
+  const { gamers, setGamers, gamerIds } = useGamers({ sortByGamerId: true });
 
   return {
     pushAbility: (gamer: GamerInterface) => {
@@ -51,7 +57,7 @@ export const usePushIncomingAbility = () => {
         gamer.role.id === "bomb" &&
         gamer.incomingAbilities.includes("killing")
       ) {
-        return pushBombAblity(gamer, gamers, setGamers);
+        return pushBombAblity(gamer, gamers, gamerIds, setGamers);
       }
 
       setGamers(

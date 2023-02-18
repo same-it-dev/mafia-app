@@ -18,7 +18,7 @@ export const useGamers = (filter?: FilterProps) => {
 
   return {
     gamers,
-
+    gamerIds: dataGamers.map(({ id }) => id),
     setGamers: (gamers: GamerInterface[]) => dispatch(setGamers(gamers)),
 
     getGamerById: (gamerId: number) =>

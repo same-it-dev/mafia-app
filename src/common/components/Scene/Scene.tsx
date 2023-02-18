@@ -14,8 +14,9 @@ export const Scene = () => {
     <div
       css={css`
         padding-top: 30px;
+        padding-bottom: 30px;
         position: relative;
-        height: 100vh;
+        min-height: 100vh;
         background: #11131a;
       `}
     >
