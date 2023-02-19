@@ -1,5 +1,5 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNightActions, usePushIncomingAbilityNew } from "../../../hooks";
 import { useDialog } from "common/components";
 import { useGamers } from "common/hooks";
@@ -9,6 +9,7 @@ export const useDoctor = (
   gamerId: number
 ) => {
   const [gamerIdValue, setGamerIdValue] = useState("");
+  const [isPushSelf, setIsPushSelf] = useState(false);
 
   const { pushIncomingAbility } = usePushIncomingAbilityNew();
 
@@ -55,10 +56,23 @@ export const useDoctor = (
     });
   };
 
+  const onPushSelfAbility = () => {
+    setGamerIdValue(`${gamerId}`);
+    setIsPushSelf(true);
+  };
+
+  useEffect(() => {
+    if (gamerIdValue && isPushSelf) {
+      onPushAbility();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gamerIdValue, isPushSelf]);
+
   return {
     onChangeGamerId,
     gamerIdValue,
     onPushAbility,
+    onPushSelfAbility,
     abilityDataDialog,
     alertDataDialog,
   };

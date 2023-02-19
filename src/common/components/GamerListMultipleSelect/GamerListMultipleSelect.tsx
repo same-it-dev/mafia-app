@@ -18,7 +18,7 @@ export const GamerListMultipleSelect = ({
   onClose,
   maxSelected,
 }: Props) => {
-  const { gamers } = useGamers({ isExcludeKilled });
+  const { gamers } = useGamers({ isExcludeKilled, sortByGamerId: true });
 
   return (
     <Multiple

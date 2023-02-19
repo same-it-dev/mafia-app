@@ -1,5 +1,5 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { useNightActions, useComparePersonsTeam } from "../../../hooks";
 import { useDialog } from "common/components";
@@ -46,22 +46,14 @@ export const useDetective = (
     }
   };
 
-  const onPushAbility = () => {
-    if (!checkComparePersonsData || gamerIdsValue.length < 2)
-      return alertDataDialog.onRunDialog({
-        title: "Оберіть двох гравців для порівняння !",
-      });
-
-    abilityDataDialog.onRunDialog({
-      title: "Використати здібність ?",
-      onConfirm: onConfirmAbility,
-    });
-  };
+  useEffect(() => {
+    if (gamerIdsValue.length === 2) onConfirmAbility();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gamerIdsValue]);
 
   return {
     onChangeGamerIds,
     gamerIdsValue,
-    onPushAbility,
     abilityDataDialog,
     alertDataDialog,
   };

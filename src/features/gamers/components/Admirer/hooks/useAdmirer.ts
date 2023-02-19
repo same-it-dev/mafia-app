@@ -1,5 +1,5 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCheckSheriffRole, useNightActions } from "../../../hooks";
 import { useDialog } from "common/components";
 
@@ -39,20 +39,14 @@ export const useAdmirer = (
     }
   };
 
-  const onPushAbility = () => {
-    if (!checkedSherifData)
-      return alertDataDialog.onRunDialog({ title: "Оберіть гравця !" });
-
-    abilityDataDialog.onRunDialog({
-      title: "Використати здібність ?",
-      onConfirm: onConfirmAbility,
-    });
-  };
+  useEffect(() => {
+    if (gamerIdValue) onConfirmAbility();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gamerIdValue]);
 
   return {
     onChangeGamerId,
     gamerIdValue,
-    onPushAbility,
     abilityDataDialog,
     alertDataDialog,
   };

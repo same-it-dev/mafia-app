@@ -7,13 +7,8 @@ import { useAdmirer } from "./hooks";
 export const Admirer = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
   const ability = useAbility(gamer.role.abilities[0]);
 
-  const {
-    onChangeGamerId,
-    gamerIdValue,
-    onPushAbility,
-    abilityDataDialog,
-    alertDataDialog,
-  } = useAdmirer(onFinishAbility, gamer.id);
+  const { onChangeGamerId, gamerIdValue, abilityDataDialog, alertDataDialog } =
+    useAdmirer(onFinishAbility, gamer.id);
 
   return (
     <>
@@ -23,10 +18,6 @@ export const Admirer = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
         value={gamerIdValue}
         onSelectGamer={onChangeGamerId}
       />
-
-      <Button variant="contained" onClick={onPushAbility}>
-        Використати здібність
-      </Button>
 
       <Dialog {...abilityDataDialog} confirm reject />
       <Dialog {...alertDataDialog} next />

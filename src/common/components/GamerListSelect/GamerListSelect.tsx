@@ -29,6 +29,7 @@ export const GamerListSelect = ({
           <MenuItem
             sx={{
               justifyContent: "flex-start",
+              fontSize: "18px",
             }}
             key={id}
             value={id}

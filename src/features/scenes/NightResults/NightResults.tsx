@@ -37,7 +37,7 @@ export const NightResults = () => {
         sx={{ marginTop: "15px" }}
         variant="contained"
       >
-        Продовжити
+        Почати день
       </Button>
 
       <Typography

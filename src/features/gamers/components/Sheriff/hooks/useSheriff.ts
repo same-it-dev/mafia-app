@@ -1,5 +1,5 @@
 import { OnFinishAbilityInterface } from "../../../interfaces";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   useNightActions,
@@ -47,7 +47,9 @@ export const useSheriff = (
         gamersIdsTo: [pushedGamer.id],
       });
     }
+  };
 
+  const onConfirmCheckGamerAbility = () => {
     if (checkedGamerData) {
       const { isTeam, checkedGamer } = checkedGamerData;
 
@@ -77,6 +79,11 @@ export const useSheriff = (
       onConfirm: onConfirmAbility,
     });
   };
+
+  useEffect(() => {
+    if (gamerIdCheckValue) onConfirmCheckGamerAbility();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gamerIdCheckValue]);
 
   return {
     onChangeGamerIdKilling,

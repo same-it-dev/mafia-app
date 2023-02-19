@@ -10,6 +10,7 @@ export const Doctor = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
   const {
     onChangeGamerId,
     onPushAbility,
+    onPushSelfAbility,
     gamerIdValue,
     abilityDataDialog,
     alertDataDialog,
@@ -25,11 +26,21 @@ export const Doctor = ({ gamer, onFinishAbility }: GamerPropsInterface) => {
       />
 
       <Button
+        sx={{ marginTop: "5px !important" }}
         className="gamer-push-ability"
         variant="contained"
         onClick={onPushAbility}
       >
         Використати здібність
+      </Button>
+
+      <Button
+        sx={{ marginTop: "0 !important" }}
+        className="gamer-push-ability"
+        variant="contained"
+        onClick={onPushSelfAbility}
+      >
+        Використати на себе
       </Button>
 
       <Dialog {...abilityDataDialog} confirm reject />

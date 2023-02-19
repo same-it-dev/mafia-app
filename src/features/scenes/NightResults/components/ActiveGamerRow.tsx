@@ -16,9 +16,9 @@ export const ActiveGamerRow = ({ gamer: { id, role } }: Props) => (
       borderColor: "primary.contrastText",
       boxSizing: "border-box",
       color: "primary.contrastText",
-      fontSize: "28px",
+      fontSize: "24px",
       "& .MuiBox-root": {
-        padding: "15px",
+        padding: "5px 15px",
       },
     }}
   >

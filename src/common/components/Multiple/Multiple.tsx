@@ -109,6 +109,7 @@ export const Multiple = ({
             sx={{
               justifyContent: "flex-start",
               display: "flex",
+              fontSize: "18px",
               background:
                 selected.indexOf(value) > -1 ? "black !important" : "none",
             }}
