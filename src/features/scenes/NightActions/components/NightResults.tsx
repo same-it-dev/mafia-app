@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import { Button } from "common/components";
+import { Button, GamerListMultipleSelect } from "common/components";
 import { GamerInterface } from "common/interfaces";
 import { NightGamerRow } from "./NightGamerRow";
 
@@ -30,6 +30,12 @@ export const NightResults = ({ killedGamers, onSubmitNextScene }: Props) => (
     {killedGamers.map((gamer) => (
       <NightGamerRow key={gamer.id} gamer={gamer} />
     ))}
+
+    <GamerListMultipleSelect
+      isExcludeKilled
+      title="Видалити гравців"
+      onSelectGamers={() => {}}
+    />
 
     <Button
       onClick={onSubmitNextScene}

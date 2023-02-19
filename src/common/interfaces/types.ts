@@ -9,6 +9,7 @@ export type SceneTypes =
   | "day"
   | "night"
   | "nightActions"
+  | "nightResults"
   | "speech";
 
 export type RoleIdTypes =

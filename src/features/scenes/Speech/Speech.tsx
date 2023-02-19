@@ -37,7 +37,13 @@ export const Speech = () => {
         `}
       >
         <Cooldown timer={timer} onFinishTimer={onFinishTimer} />
-        <GamerCard gamer={activeGamer} />
+        {activeGamer ? (
+          <GamerCard gamer={activeGamer} />
+        ) : (
+          <Typography variant="h1" color="primary.contrastText">
+            Немає гравців
+          </Typography>
+        )}
       </div>
     </div>
   );

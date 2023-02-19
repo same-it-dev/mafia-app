@@ -1,18 +1,20 @@
 import { useDialog } from "common/components";
-import { useGamers, useScene } from "common/hooks";
+import { useScene } from "common/hooks";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { disableGamers } from "redux-store";
 
 export const useVoting = () => {
-  const [gamerIdValue, setGamerIdValue] = useState("");
+  const dispatch = useDispatch();
+  const [gamerIdsValue, setGamerIdsValue] = useState<number[]>([]);
   const { runScene } = useScene();
-  const { gamers, setGamers } = useGamers();
 
   const startNightDataDialog = useDialog();
   const deleteDataGamerDialog = useDialog();
   const alertDataDialog = useDialog();
 
-  const onSelectGamer = (id: string) => {
-    setGamerIdValue(id);
+  const onSelectGamers = (ids: number[]) => {
+    setGamerIdsValue(ids);
   };
 
   const onStartNight = () => {
@@ -25,33 +27,24 @@ export const useVoting = () => {
   };
 
   const onDeleteGamer = () => {
-    if (!gamerIdValue)
+    if (!gamerIdsValue.length)
       return alertDataDialog.onRunDialog({ title: "Оберіть гравця" });
-    console.log(gamerIdValue);
-    deleteDataGamerDialog.onRunDialog({
-      title: `Ви дійсно бажаєте видалити гравця ?`,
-      onConfirm: () => {
-        setGamers(
-          gamers.map((gamer) =>
-            gamer.id === Number(gamerIdValue)
-              ? { ...gamer, isActive: false }
-              : gamer
-          )
-        );
 
-        startNightDataDialog.onRunDialog({
-          title: "Почати ніч ?",
-          onConfirm: () => {
-            runScene("nightActions");
-          },
-        });
+    dispatch(disableGamers({ gamerIds: gamerIdsValue }));
+
+    setGamerIdsValue([]);
+
+    startNightDataDialog.onRunDialog({
+      title: "Гравців видаленно, почати ніч ?",
+      onConfirm: () => {
+        runScene("nightActions");
       },
     });
   };
 
   return {
-    gamerIdValue,
-    onSelectGamer,
+    gamerIdsValue,
+    onSelectGamers,
     onDeleteGamer,
     onStartNight,
     deleteDataGamerDialog,

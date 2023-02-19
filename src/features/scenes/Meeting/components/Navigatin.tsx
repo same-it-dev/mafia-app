@@ -32,7 +32,7 @@ export const Navigation = ({
           Повторити
         </Button>
         <Button onClick={onRunNextScene} variant="contained" color="inherit">
-          Голосування
+          Промови
         </Button>
       </>
     )}

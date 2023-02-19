@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { Scene, Header, StartGame } from "common/components";
+import { Header, StartGame } from "common/components";
+import { Scene } from "features/scenes";
 
 function App() {
   return (

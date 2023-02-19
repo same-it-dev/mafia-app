@@ -43,10 +43,39 @@ export const gamersSlice = createSlice({
         return blockingStrategy(pushedGamer, state);
       }
     },
+
+    disableKilledNigthGamers: (state) =>
+      state.map((gamer) =>
+        gamer.isKilled
+          ? { ...gamer, isActive: false, incomingAbilities: [] }
+          : { ...gamer, incomingAbilities: [] }
+      ),
+
+    disableGamers: (state, action: PayloadAction<{ gamerIds: number[] }>) => {
+      return state.map((gamer) =>
+        action.payload.gamerIds.includes(gamer.id)
+          ? { ...gamer, isActive: false, incomingAbilities: [] }
+          : gamer
+      );
+    },
+
+    enableGamers: (state, action: PayloadAction<{ gamerIds: number[] }>) => {
+      return state.map((gamer) =>
+        action.payload.gamerIds.includes(gamer.id)
+          ? { ...gamer, isActive: true, incomingAbilities: [] }
+          : gamer
+      );
+    },
   },
 });
 
-export const { setGamers, pushIncomingAbility } = gamersSlice.actions;
+export const {
+  setGamers,
+  pushIncomingAbility,
+  disableKilledNigthGamers,
+  disableGamers,
+  enableGamers,
+} = gamersSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 export const selectGames = (state: RootState) => state.games;

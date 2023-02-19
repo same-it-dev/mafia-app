@@ -6,6 +6,7 @@ import {
   Setting,
   RoleSet,
   NightActions,
+  NightResults,
   Speech,
   Voting,
 } from "features/scenes";
@@ -18,6 +19,7 @@ const Scenes: Record<SceneTypes, () => JSX.Element> = {
   setting: Setting,
   roleset: RoleSet,
   nightActions: NightActions,
+  nightResults: NightResults,
   acquaintance: Acquaintance,
   speech: Speech,
   day: function (): JSX.Element {

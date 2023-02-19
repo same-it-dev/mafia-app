@@ -1,4 +1,4 @@
-import { useGamers, useRoles } from "common/hooks";
+import { useGamers, useRoles, useScene } from "common/hooks";
 import { GamerInterface, RoleInterface } from "common/interfaces";
 import { useState } from "react";
 
@@ -6,6 +6,7 @@ export const useNightActions = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { gamers } = useGamers();
   const { rolesList } = useRoles();
+  const { runScene } = useScene();
 
   const mafiaRole = rolesList.find(({ id }) => id === "mafia") as RoleInterface;
 
@@ -38,7 +39,15 @@ export const useNightActions = () => {
   const activeGamer = gamersList[currentIndex];
 
   const runNextGamer = () => {
-    setCurrentIndex(currentIndex + 1);
+    const isGamer = !!gamersList[currentIndex + 1];
+
+    if (isGamer) {
+      setCurrentIndex(currentIndex + 1);
+    }
+
+    if (!isGamer) {
+      runScene("nightResults");
+    }
   };
 
   return {

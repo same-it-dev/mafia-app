@@ -1,11 +1,11 @@
 import { Box, Typography } from "@mui/material";
-import { Button, Dialog, GamerListSelect } from "common/components";
+import { Button, Dialog, GamerListMultipleSelect } from "common/components";
 import { useVoting } from "./hooks";
 
 export const Voting = () => {
   const {
-    gamerIdValue,
-    onSelectGamer,
+    gamerIdsValue,
+    onSelectGamers,
     onDeleteGamer,
     onStartNight,
     deleteDataGamerDialog,
@@ -32,43 +32,27 @@ export const Voting = () => {
       >
         Голосування
       </Typography>
-      <GamerListSelect
-        label="Видалити гравця"
-        name="delete-gamer"
-        value={gamerIdValue}
-        onSelectGamer={onSelectGamer}
+
+      <Typography variant="h5" color="primary.contrastText">
+        Видалити гравців
+      </Typography>
+
+      <GamerListMultipleSelect
+        title="Оберіть номери"
+        onSelectGamers={onSelectGamers}
+        onClose={onDeleteGamer}
+        resetValue={gamerIdsValue.length}
       />
-      <Box
+      <Button
         sx={{
-          display: "flex",
           width: "100%",
-          justifyContent: "space-between",
-          "& .MuiButton-root": {
-            maxWidth: "150px",
-          },
+          marginTop: "30px",
         }}
+        variant="contained"
+        onClick={onStartNight}
       >
-        <Button
-          sx={{
-            width: "100%",
-            marginTop: "30px",
-          }}
-          variant="contained"
-          onClick={onStartNight}
-        >
-          Почати ніч
-        </Button>
-        <Button
-          sx={{
-            width: "100%",
-            marginTop: "30px",
-          }}
-          variant="contained"
-          onClick={onDeleteGamer}
-        >
-          Видалити
-        </Button>
-      </Box>
+        Почати ніч
+      </Button>
       <Dialog {...startNightDataDialog} confirm reject />
       <Dialog {...deleteDataGamerDialog} confirm reject />
       <Dialog {...alertDataDialog} next />

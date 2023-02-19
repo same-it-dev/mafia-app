@@ -1,9 +1,7 @@
 import { GamerInterface } from "common/interfaces";
+import { StrategyGamerPushType } from "../interfaces";
 
-const defaultStrategy = (
-  pushedGamer: GamerInterface,
-  gamers: GamerInterface[]
-): GamerInterface[] => {
+const defaultStrategy: StrategyGamerPushType = (pushedGamer, gamers) => {
   return gamers.map((gamer) =>
     gamer.id === pushedGamer.id
       ? {
@@ -15,12 +13,7 @@ const defaultStrategy = (
   );
 };
 
-type StrategyType = (
-  pushedGamer: GamerInterface,
-  gamers: GamerInterface[]
-) => GamerInterface[];
-
-const strategies: Record<string, StrategyType> = {
+const strategies: Record<string, StrategyGamerPushType> = {
   default: defaultStrategy,
 };
 

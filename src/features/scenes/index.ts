@@ -8,4 +8,6 @@ export * from "./RoleSet";
 export * from "./Day";
 export * from "./Night";
 export * from "./NightActions";
+export * from "./NightResults";
 export * from "./Speech";
+export * from "./Scene";

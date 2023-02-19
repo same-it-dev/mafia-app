@@ -1,9 +1,7 @@
 import { GamerInterface } from "common/interfaces";
+import { StrategyGamerPushType } from "../interfaces";
 
-const bombStrategy = (
-  pushedGamer: GamerInterface,
-  gamers: GamerInterface[]
-): GamerInterface[] => {
+const bombStrategy: StrategyGamerPushType = (pushedGamer, gamers) => {
   const gamerIds = gamers.map(({ id }) => id);
 
   const afterGamer = gamers.find(({ id }) =>
@@ -45,10 +43,7 @@ const bombStrategy = (
   );
 };
 
-const defaultStrategy = (
-  pushedGamer: GamerInterface,
-  gamers: GamerInterface[]
-): GamerInterface[] => {
+const defaultStrategy: StrategyGamerPushType = (pushedGamer, gamers) => {
   const isHealing = pushedGamer.incomingAbilities.includes("healing");
 
   return gamers.map((gamer) =>
@@ -64,12 +59,7 @@ const defaultStrategy = (
   );
 };
 
-type StrategyType = (
-  pushedGamer: GamerInterface,
-  gamers: GamerInterface[]
-) => GamerInterface[];
-
-const strategies: Record<string, StrategyType> = {
+const strategies: Record<string, StrategyGamerPushType> = {
   bomb: bombStrategy,
   default: defaultStrategy,
 };

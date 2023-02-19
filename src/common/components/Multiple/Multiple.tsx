@@ -25,6 +25,7 @@ interface Props {
     value: string | number;
   }[];
   onChange: (value: number[]) => void;
+  onClose?: () => void;
   title: string;
   resetValue?: number;
   maxSelected?: number;
@@ -33,6 +34,7 @@ interface Props {
 export const Multiple = ({
   options,
   onChange,
+  onClose,
   title,
   resetValue,
   maxSelected,
@@ -59,80 +61,81 @@ export const Multiple = ({
   };
 
   return (
-    <div>
-      <FormControl
-        css={css`
-          width: 100%;
-          background: #1d1e26;
-          font-family: "Cuprum";
-          font-style: normal;
-          font-weight: 400;
-          font-size: 20px;
-          line-height: 23px;
-          letter-spacing: 0.05em;
-          text-transform: uppercase;
-          margin-bottom: 30px;
-          border-radius: 5px;
+    <FormControl
+      css={css`
+        width: 100%;
+        background: #1d1e26;
+        font-family: "Cuprum";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 23px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        margin: 15px 0 30px 0;
+        border-radius: 5px;
 
-          .MuiInputLabel-root,
-          .MuiInputLabel-root.Mui-focused,
-          .MuiSvgIcon-root,
-          .MuiInputBase-root {
-            color: #abb0c5;
-          }
+        .MuiInputLabel-root,
+        .MuiInputLabel-root.Mui-focused,
+        .MuiSvgIcon-root,
+        .MuiInputBase-root {
+          color: #abb0c5;
+        }
 
-          .MuiOutlinedInput-notchedOutline {
-            border: none;
-          }
+        .MuiOutlinedInput-notchedOutline {
+          border: none;
+        }
 
-          .MuiSelect-select {
-            padding: 15px !important;
-          }
-        `}
+        .MuiSelect-select {
+          padding: 15px !important;
+        }
+      `}
+    >
+      <InputLabel id="multiple-checkbox-label">{title}</InputLabel>
+
+      <Select
+        labelId="multiple-checkbox-label"
+        id="multiple-checkbox"
+        multiple
+        value={selected}
+        onChange={handleChange}
+        onClose={onClose}
+        input={<OutlinedInput label={title} />}
+        renderValue={(selected) => selected.join(", ")}
+        MenuProps={MenuProps}
       >
-        <InputLabel id="multiple-checkbox-label">{title}</InputLabel>
-
-        <Select
-          labelId="multiple-checkbox-label"
-          id="multiple-checkbox"
-          multiple
-          value={selected}
-          onChange={handleChange}
-          input={<OutlinedInput label={title} />}
-          renderValue={(selected) => selected.join(", ")}
-          MenuProps={MenuProps}
-        >
-          {options.map(({ firstName, secondName, value }) => (
-            <MenuItem
+        {options.map(({ firstName, secondName, value }) => (
+          <MenuItem
+            sx={{
+              justifyContent: "flex-start",
+              display: "flex",
+              background:
+                selected.indexOf(value) > -1 ? "black !important" : "none",
+            }}
+            key={value}
+            value={value}
+          >
+            <Checkbox
               sx={{
-                justifyContent: "flex-start",
-                display: "flex",
-              }}
-              key={value}
-              value={value}
-            >
-              <Checkbox
-                sx={{
+                color: "#fff",
+                "& .MuiSvgIcon-root": {
                   color: "#fff",
-                  "& .MuiSvgIcon-root": {
-                    color: "#fff",
-                  },
-                }}
-                checked={selected.indexOf(value) > -1}
-              />
-              <Box component="span">{firstName}</Box>{" "}
-              <Box
-                component="span"
-                sx={{
-                  marginLeft: "15px",
-                }}
-              >
-                {secondName}
-              </Box>
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-    </div>
+                },
+              }}
+              checked={selected.indexOf(value) > -1}
+            />
+            <Box component="span">{firstName}</Box>{" "}
+            <Box
+              component="span"
+              sx={{
+                marginLeft: "15px",
+              }}
+            >
+              {secondName}
+            </Box>
+          </MenuItem>
+        ))}
+      </Select>
+    </FormControl>
   );
 };
