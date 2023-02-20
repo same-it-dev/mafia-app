@@ -12,7 +12,7 @@ export const GamerCard = ({ gamer }: Props) => {
         display: flex;
         position: relative;
         flex-direction: column;
-        max-width: 400px;
+        max-width: 500px;
       `}
     >
       <img src="/img/gamer.svg" alt="img" />
