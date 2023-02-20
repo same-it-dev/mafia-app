@@ -15,7 +15,7 @@ const theme = createTheme({
     h1: {
       fontStyle: "normal",
       fontWeight: 400,
-      fontSize: "35px",
+      fontSize: "30px",
       lineHeight: "40px",
       letterSpacing: "0.05em",
       textTransform: "uppercase",
@@ -25,7 +25,7 @@ const theme = createTheme({
     h2: {
       fontStyle: "normal",
       fontWeight: 400,
-      fontSize: "26px",
+      fontSize: "20px",
       lineHeight: "32px",
       letterSpacing: "0.05em",
       textTransform: "uppercase",

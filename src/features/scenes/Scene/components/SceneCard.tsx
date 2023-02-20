@@ -6,7 +6,7 @@ interface Props {
 }
 
 export const SceneCard = ({ children }: Props) => (
-  <Box sx={{ maxWidth: "400px", margin: "auto", padding: "0 15px" }}>
+  <Box sx={{ maxWidth: "400px", margin: "auto", padding: "0 40px" }}>
     {children}
   </Box>
 );
